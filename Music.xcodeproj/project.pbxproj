@@ -13,6 +13,7 @@
 		252F6D0F219147FF00BBCA15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 252F6D0E219147FF00BBCA15 /* Assets.xcassets */; };
 		252F6D12219147FF00BBCA15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 252F6D10219147FF00BBCA15 /* LaunchScreen.storyboard */; };
 		252F6D1A21915C5400BBCA15 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F6D1921915C5400BBCA15 /* CustomSlider.swift */; };
+		25F234F621951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */; };
 		9126B4EAADBDAE36D399B36C /* libPods-Music.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6435D83E068ED41A26B64BA /* libPods-Music.a */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		252F6D11219147FF00BBCA15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		252F6D13219147FF00BBCA15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		252F6D1921915C5400BBCA15 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3"; sourceTree = "<group>"; };
 		6B204F8485F85C2B8030CCD8 /* Pods-Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music/Pods-Music.debug.xcconfig"; sourceTree = "<group>"; };
 		B6435D83E068ED41A26B64BA /* libPods-Music.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Music.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE98AB781DB74E6F40A7EA18 /* Pods-Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music/Pods-Music.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		252F6D06219147FD00BBCA15 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */,
 				252F6D07219147FD00BBCA15 /* AppDelegate.swift */,
 				252F6D09219147FD00BBCA15 /* ViewController.swift */,
 				252F6D0B219147FD00BBCA15 /* Main.storyboard */,
@@ -153,6 +156,7 @@
 			files = (
 				252F6D12219147FF00BBCA15 /* LaunchScreen.storyboard in Resources */,
 				252F6D0F219147FF00BBCA15 /* Assets.xcassets in Resources */,
+				25F234F621951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 in Resources */,
 				252F6D0D219147FD00BBCA15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

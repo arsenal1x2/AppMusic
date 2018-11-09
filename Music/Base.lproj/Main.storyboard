@@ -198,6 +198,9 @@
                                                         <color key="minimumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="maximumTrackTintColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="changedSlidervalue:" destination="BYZ-38-t0r" eventType="valueChanged" id="mkT-8D-hBv"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-2:29" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-Wf-CvN">
                                                         <rect key="frame" x="293.5" y="0.0" width="31.5" height="18.5"/>
@@ -361,7 +364,9 @@
                     </view>
                     <connections>
                         <outlet property="buttonPlayMusic" destination="Yxo-QS-nJM" id="ND0-Iu-uC1"/>
+                        <outlet property="concurentTimeLbl" destination="eoB-B1-0w6" id="afT-Aa-3yS"/>
                         <outlet property="deviceLabel" destination="Xt2-Oe-GDm" id="zDW-bC-9kP"/>
+                        <outlet property="durationTimeLbl" destination="fN2-Wf-CvN" id="4Wr-Lk-y9u"/>
                         <outlet property="slider" destination="6lk-sQ-M5Q" id="RUi-bi-5vn"/>
                         <outlet property="slideshow" destination="2aC-2s-26C" id="ivp-OO-Iuf"/>
                     </connections>
