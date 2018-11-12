@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ControlView" customModule="Music" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="j7F-Jt-auX" id="0Tb-18-3VA"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="GJk-2q-tt7"/>
+                <outlet property="nextButton" destination="dPl-LG-nE6" id="1jo-3O-q5l"/>
+                <outlet property="playButton" destination="nqL-zn-V2y" id="J0Z-0h-RdM"/>
+                <outlet property="replayButton" destination="XLB-Jn-uRv" id="dX0-B6-2OB"/>
+                <outlet property="shuffleButton" destination="CIV-QZ-8b5" id="N1f-c1-fuN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="68"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1e-Ou-ibf">
+                    <rect key="frame" x="0.0" y="0.0" width="315" height="68"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57Y-Kl-Vlu">
+                            <rect key="frame" x="0.0" y="0.0" width="315" height="68"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIV-QZ-8b5">
+                                    <rect key="frame" x="0.0" y="0.0" width="39.5" height="68"/>
+                                    <state key="normal" image="icons8-shuffle "/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7F-Jt-auX">
+                                    <rect key="frame" x="39.5" y="0.0" width="84" height="68"/>
+                                    <state key="normal" image="icons8-skip-to-start "/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqL-zn-V2y">
+                                    <rect key="frame" x="123.5" y="0.0" width="68" height="68"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="nqL-zn-V2y" secondAttribute="height" multiplier="1:1" id="6Lf-kN-d87"/>
+                                    </constraints>
+                                    <state key="normal" image="211876-128"/>
+                                    <connections>
+                                        <action selector="clickPlayButton:" destination="-1" eventType="touchUpInside" id="gWo-la-eRa"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPl-LG-nE6">
+                                    <rect key="frame" x="191.5" y="0.0" width="84" height="68"/>
+                                    <state key="normal" image="icons8-end "/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-Jn-uRv">
+                                    <rect key="frame" x="275.5" y="0.0" width="39.5" height="68"/>
+                                    <state key="normal" image="icons8-repeat "/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="CIV-QZ-8b5" firstAttribute="width" secondItem="57Y-Kl-Vlu" secondAttribute="width" multiplier="1:8" id="3fL-VC-dcl"/>
+                                <constraint firstItem="XLB-Jn-uRv" firstAttribute="width" secondItem="CIV-QZ-8b5" secondAttribute="width" id="Oym-a6-8a4"/>
+                                <constraint firstItem="nqL-zn-V2y" firstAttribute="height" secondItem="57Y-Kl-Vlu" secondAttribute="height" id="mVq-mC-aw7"/>
+                                <constraint firstItem="dPl-LG-nE6" firstAttribute="width" secondItem="j7F-Jt-auX" secondAttribute="width" id="rCQ-ay-z7W"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.098039215690000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="57Y-Kl-Vlu" secondAttribute="trailing" id="K8F-yd-Et5"/>
+                        <constraint firstItem="57Y-Kl-Vlu" firstAttribute="top" secondItem="W1e-Ou-ibf" secondAttribute="top" id="LZd-HP-04J"/>
+                        <constraint firstItem="57Y-Kl-Vlu" firstAttribute="leading" secondItem="W1e-Ou-ibf" secondAttribute="leading" id="kEv-aV-7Hk"/>
+                        <constraint firstAttribute="bottom" secondItem="57Y-Kl-Vlu" secondAttribute="bottom" id="oXz-0F-T6E"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="W1e-Ou-ibf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="VcH-hG-h9R"/>
+                <constraint firstItem="W1e-Ou-ibf" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="W0v-zW-TKK"/>
+                <constraint firstItem="W1e-Ou-ibf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gqf-FY-gnK"/>
+                <constraint firstAttribute="bottom" secondItem="W1e-Ou-ibf" secondAttribute="bottom" id="tpy-VO-dRh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-20.5" y="-306"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="211876-128" width="42" height="42"/>
+        <image name="icons8-end " width="26" height="26"/>
+        <image name="icons8-repeat " width="15" height="15"/>
+        <image name="icons8-shuffle " width="15" height="15"/>
+        <image name="icons8-skip-to-start " width="26" height="26"/>
+    </resources>
+</document>

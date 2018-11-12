@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArtworkView" customModule="Music" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="EZD-rf-rF9"/>
+                <outlet property="pageController" destination="qc0-eJ-qrI" id="VHE-qV-FNu"/>
+                <outlet property="scrollView" destination="qZh-YB-p8A" id="BmV-te-jhD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="350"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZh-YB-p8A">
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="350"/>
+                </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-eJ-qrI">
+                    <rect key="frame" x="0.0" y="315.5" width="325" height="34.5"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="0.066666666669999999" green="0.098039215690000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qc0-eJ-qrI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3BO-gt-jJg"/>
+                <constraint firstItem="qc0-eJ-qrI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="5:51" id="3bz-nE-0KU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qc0-eJ-qrI" secondAttribute="trailing" id="AnZ-ER-Fk9"/>
+                <constraint firstItem="qZh-YB-p8A" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Dl3-fH-RSJ"/>
+                <constraint firstItem="qZh-YB-p8A" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="JJO-ML-ikE"/>
+                <constraint firstItem="qZh-YB-p8A" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="OST-As-Mw0"/>
+                <constraint firstItem="qZh-YB-p8A" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UGd-3T-rqe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qc0-eJ-qrI" secondAttribute="bottom" id="j9h-dH-wKC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="24.5" y="52"/>
+        </view>
+    </objects>
+</document>

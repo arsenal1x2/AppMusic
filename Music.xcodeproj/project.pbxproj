@@ -13,7 +13,17 @@
 		252F6D0F219147FF00BBCA15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 252F6D0E219147FF00BBCA15 /* Assets.xcassets */; };
 		252F6D12219147FF00BBCA15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 252F6D10219147FF00BBCA15 /* LaunchScreen.storyboard */; };
 		252F6D1A21915C5400BBCA15 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F6D1921915C5400BBCA15 /* CustomSlider.swift */; };
+		2535BD63219943E800C0FE01 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD62219943E800C0FE01 /* ControlView.swift */; };
+		2535BD662199494B00C0FE01 /* SongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2535BD652199494B00C0FE01 /* SongView.xib */; };
+		2535BD682199495B00C0FE01 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD672199495B00C0FE01 /* SongView.swift */; };
+		2535BD6C21994BD200C0FE01 /* CustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2535BD6B21994BD200C0FE01 /* CustomNavigationBar.xib */; };
+		2535BD6E21994BE300C0FE01 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD6D21994BE300C0FE01 /* CustomNavigationBar.swift */; };
+		2535BD7021994DF400C0FE01 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2535BD6F21994DF400C0FE01 /* PlayerView.xib */; };
+		2535BD7221994E0300C0FE01 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD7121994E0300C0FE01 /* PlayerView.swift */; };
+		2535BD74219951B600C0FE01 /* ArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2535BD73219951B600C0FE01 /* ArtworkView.xib */; };
+		2535BD76219951D100C0FE01 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD75219951D100C0FE01 /* ArtworkView.swift */; };
 		25F234F621951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */; };
+		25F234F821953D750020DF64 /* ControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F234F721953D750020DF64 /* ControlView.xib */; };
 		9126B4EAADBDAE36D399B36C /* libPods-Music.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6435D83E068ED41A26B64BA /* libPods-Music.a */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +36,17 @@
 		252F6D11219147FF00BBCA15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		252F6D13219147FF00BBCA15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		252F6D1921915C5400BBCA15 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		2535BD62219943E800C0FE01 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		2535BD652199494B00C0FE01 /* SongView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongView.xib; sourceTree = "<group>"; };
+		2535BD672199495B00C0FE01 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
+		2535BD6B21994BD200C0FE01 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
+		2535BD6D21994BE300C0FE01 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		2535BD6F21994DF400C0FE01 /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		2535BD7121994E0300C0FE01 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		2535BD73219951B600C0FE01 /* ArtworkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkView.xib; sourceTree = "<group>"; };
+		2535BD75219951D100C0FE01 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3"; sourceTree = "<group>"; };
+		25F234F721953D750020DF64 /* ControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ControlView.xib; sourceTree = "<group>"; };
 		6B204F8485F85C2B8030CCD8 /* Pods-Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music/Pods-Music.debug.xcconfig"; sourceTree = "<group>"; };
 		B6435D83E068ED41A26B64BA /* libPods-Music.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Music.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE98AB781DB74E6F40A7EA18 /* Pods-Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music/Pods-Music.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +94,7 @@
 		252F6D06219147FD00BBCA15 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				2535BD64219943EF00C0FE01 /* View */,
 				25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */,
 				252F6D07219147FD00BBCA15 /* AppDelegate.swift */,
 				252F6D09219147FD00BBCA15 /* ViewController.swift */,
@@ -84,6 +105,23 @@
 				252F6D1921915C5400BBCA15 /* CustomSlider.swift */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		2535BD64219943EF00C0FE01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25F234F721953D750020DF64 /* ControlView.xib */,
+				2535BD62219943E800C0FE01 /* ControlView.swift */,
+				2535BD652199494B00C0FE01 /* SongView.xib */,
+				2535BD672199495B00C0FE01 /* SongView.swift */,
+				2535BD6B21994BD200C0FE01 /* CustomNavigationBar.xib */,
+				2535BD6D21994BE300C0FE01 /* CustomNavigationBar.swift */,
+				2535BD6F21994DF400C0FE01 /* PlayerView.xib */,
+				2535BD7121994E0300C0FE01 /* PlayerView.swift */,
+				2535BD73219951B600C0FE01 /* ArtworkView.xib */,
+				2535BD75219951D100C0FE01 /* ArtworkView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C83EE5B03602F758E5C13DA9 /* Frameworks */ = {
@@ -155,9 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				252F6D12219147FF00BBCA15 /* LaunchScreen.storyboard in Resources */,
+				2535BD662199494B00C0FE01 /* SongView.xib in Resources */,
+				25F234F821953D750020DF64 /* ControlView.xib in Resources */,
+				2535BD74219951B600C0FE01 /* ArtworkView.xib in Resources */,
 				252F6D0F219147FF00BBCA15 /* Assets.xcassets in Resources */,
 				25F234F621951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 in Resources */,
+				2535BD6C21994BD200C0FE01 /* CustomNavigationBar.xib in Resources */,
 				252F6D0D219147FD00BBCA15 /* Main.storyboard in Resources */,
+				2535BD7021994DF400C0FE01 /* PlayerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2535BD6E21994BE300C0FE01 /* CustomNavigationBar.swift in Sources */,
+				2535BD76219951D100C0FE01 /* ArtworkView.swift in Sources */,
+				2535BD63219943E800C0FE01 /* ControlView.swift in Sources */,
+				2535BD7221994E0300C0FE01 /* PlayerView.swift in Sources */,
 				252F6D0A219147FD00BBCA15 /* ViewController.swift in Sources */,
+				2535BD682199495B00C0FE01 /* SongView.swift in Sources */,
 				252F6D1A21915C5400BBCA15 /* CustomSlider.swift in Sources */,
 				252F6D08219147FD00BBCA15 /* AppDelegate.swift in Sources */,
 			);
