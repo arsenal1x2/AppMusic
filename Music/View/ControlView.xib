@@ -40,6 +40,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7F-Jt-auX">
                                     <rect key="frame" x="39.5" y="0.0" width="84" height="68"/>
                                     <state key="normal" image="icons8-skip-to-start "/>
+                                    <connections>
+                                        <action selector="clickbackButton:" destination="-1" eventType="touchUpInside" id="tP1-vH-IEz"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqL-zn-V2y">
                                     <rect key="frame" x="123.5" y="0.0" width="68" height="68"/>
@@ -54,6 +57,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPl-LG-nE6">
                                     <rect key="frame" x="191.5" y="0.0" width="84" height="68"/>
                                     <state key="normal" image="icons8-end "/>
+                                    <connections>
+                                        <action selector="clickNextButton:" destination="-1" eventType="touchUpInside" id="yhH-xX-qRO"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-Jn-uRv">
                                     <rect key="frame" x="275.5" y="0.0" width="39.5" height="68"/>

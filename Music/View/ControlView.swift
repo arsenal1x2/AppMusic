@@ -16,7 +16,13 @@ class ControlView: UIView {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+
+    var delegate:ControlViewDelegate?
     var isPlaying = false
+
+    @IBAction func clickbackButton(_ sender: Any) {
+        delegate?.backSong(sender: self)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,11 +40,18 @@ class ControlView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+    @IBAction func clickNextButton(_ sender: Any) {
+        delegate?.nextSong(sender: self)
+
+    }
     private func commonInit() {
-        Bundle.main.loadNibNamed("ControlView", owner: self, options: nil)
-       addSubview(contentView)
+      Bundle.main.loadNibNamed("ControlView", owner: self, options: nil)
+      addSubview(contentView)
       contentView.frame = self.bounds
-       contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+      contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
-
+protocol ControlViewDelegate {
+    func nextSong(sender:ControlView)
+    func backSong(sender:ControlView)
+}

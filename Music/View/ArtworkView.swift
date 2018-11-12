@@ -19,6 +19,7 @@ class ArtworkView: UIView,UIScrollViewDelegate {
     var currentPage = 0
     var photo: [UIImageView] = []
     var images:[UIImageView] = []
+    var controlView:ControlView = ControlView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -39,10 +40,12 @@ class ArtworkView: UIView,UIScrollViewDelegate {
         pageController.numberOfPages = images.count
         pageController.currentPage = 0
         self.bringSubview(toFront: pageController)
+        controlView.delegate = self
 
+        
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x/self.frame.width)
+        let pageIndex = round(scrollView.contentOffset.x/contentView.frame.width)
         pageController.currentPage = Int(pageIndex)
 
         let maximumHorizontalOffset: CGFloat = scrollView.contentSize.width - scrollView.frame.width
@@ -70,17 +73,44 @@ class ArtworkView: UIView,UIScrollViewDelegate {
         return [imgView1,imgView2]
     }
     func setupSlideScrollView(slides : [UIImageView]) {
-        scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        scrollView.contentSize = CGSize(width: self.frame.width * CGFloat(slides.count), height: self.frame.height)
+        scrollView.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        scrollView.contentSize = CGSize(width: contentView.frame.width * CGFloat(slides.count), height: contentView.frame.height)
         scrollView.isPagingEnabled = true
 
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: self.frame.width * CGFloat(i), y: 0, width: self.frame.width, height: self.frame.height)
+            slides[i].frame = CGRect(x: contentView.frame.width * CGFloat(i), y: 0, width: contentView.frame.width, height: contentView.frame.height)
             scrollView.addSubview(images[i])
         }
     }
+}
+extension ArtworkView:ControlViewDelegate{
+    func backSong(sender: ControlView) {
+        var index = pageController.currentPage
+        if(index == 0){
+            index = images.count - 1
+        }else {
+            index = index - 1
+        }
+        pageController.currentPage = index
+        var frame = scrollView.frame
+        frame.origin.y = 0
+        frame.origin.x = CGFloat(index) * frame.size.width
+        scrollView.scrollRectToVisible(frame, animated: true)
+    }
 
+    func nextSong(sender: ControlView) {
+        var index = pageController.currentPage
+        if(index == images.count - 1){
+            index = 0
+        }else {
+            index = index + 1
+        }
+        pageController.currentPage = index
+        var frame = scrollView.frame
+        frame.origin.y = 0
+        frame.origin.x = CGFloat(index) * frame.size.width
+        scrollView.scrollRectToVisible(frame, animated: true)
 
-
+    }
 
 }
