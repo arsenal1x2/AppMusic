@@ -8,14 +8,21 @@
 
 import UIKit
 
+@objc protocol ControlViewDelegate: class {
+    @objc optional func nextSong(sender: ControlView)
+    @objc optional func backSong(sender: ControlView)
+    @objc optional func play(sender: ControlView)
+    @objc optional func stop(sender: ControlView)
+}
+
 class ControlView: UIView {
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    weak var delegate: ControlViewDelegate?
+    weak var delegateViewController: ControlViewDelegate?
+    weak var delegateArtworkView: ControlViewDelegate?
     var isPlaying = false
 
     override init(frame: CGRect) {
@@ -34,23 +41,21 @@ class ControlView: UIView {
 
     @IBAction func clickPlayButton(_ sender: Any) {
         if !isPlaying {
-            playButton.setImage(UIImage(named: "326570-256 "), for: .normal)
+            playButton.setImage(UIImage(named: icon.stop), for: .normal)
+            guard let delegate = delegateViewController else { return }
+            delegate.play?(sender: self)
         } else {
-            playButton.setImage(UIImage(named: "211876-128"), for: .normal)
+            playButton.setImage(UIImage(named: icon.play), for: .normal)
+            delegateViewController?.stop?(sender: self)
         }
         isPlaying = !isPlaying
     }
 
     @IBAction func clickbackButton(_ sender: Any) {
-        delegate?.backSong(sender: self)
+        delegateArtworkView?.backSong?(sender: self)
     }
 
     @IBAction func clickNextButton(_ sender: Any) {
-        delegate?.nextSong(sender: self)
-
+        delegateArtworkView?.nextSong?(sender: self)
     }
-}
-protocol ControlViewDelegate: class {
-    func nextSong(sender: ControlView)
-    func backSong(sender: ControlView)
 }

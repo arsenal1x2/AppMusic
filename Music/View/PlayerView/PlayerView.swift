@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol PlayerViewDelegate: class {
+    func sliderDidChanged(value: Float, sender: PlayerView)
+}
+
 class PlayerView: UIView {
     @IBOutlet weak var currentTimeLbl: UILabel!
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var totalTimeLbl: UILabel!
     @IBOutlet weak var slider: UISlider!
+    weak var delegate:PlayerViewDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -21,18 +25,31 @@ class PlayerView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+
     }
+
+    @IBAction func sliderChanged(_ sender: Any) {
+        let value = slider.value
+        delegate?.sliderDidChanged(value: value, sender: self)
+    }
+
     private func commonInit() {
         loadNib()
         setupSlider()
     }
     private func setupSlider() {
-        slider.setThumbImage(UIImage(named: "icons8-record"), for: .normal)
-        slider.setThumbImage(UIImage(named: "icons8-record"), for: .highlighted)
+        slider.setThumbImage(UIImage(named: icon.slider), for: .normal)
+        slider.setThumbImage(UIImage(named: icon.slider), for: .highlighted)
+    }
+
+    func updateFrame(with timeDuration: String, timeTotal: String, duration: Float) {
+         currentTimeLbl.text = timeDuration
+         totalTimeLbl.text = timeTotal
+         slider.value = duration
     }
 }
-protocol PlayerViewDelegate: class {
-    func setDuration(_ value: Float)
-}
+
+

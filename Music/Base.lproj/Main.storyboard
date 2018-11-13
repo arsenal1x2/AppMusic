@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="BYZ-38-t0r" customClass="ViewController" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,11 +92,12 @@
                     <connections>
                         <outlet property="artworkView" destination="bsn-4w-N7t" id="Rjd-Fw-cV5"/>
                         <outlet property="controlView" destination="ZsD-b0-QFu" id="wyF-Mf-H9t"/>
+                        <outlet property="playerView" destination="Xem-NO-qPa" id="Ew3-D3-zUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39.200000000000003" y="93.103448275862078"/>
+            <point key="canvasLocation" x="-284" y="-296"/>
         </scene>
     </scenes>
 </document>

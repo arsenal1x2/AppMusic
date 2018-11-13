@@ -15,7 +15,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ControlView" customModule="Music" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="j7F-Jt-auX" id="0Tb-18-3VA"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="GJk-2q-tt7"/>
                 <outlet property="nextButton" destination="dPl-LG-nE6" id="1jo-3O-q5l"/>
                 <outlet property="playButton" destination="nqL-zn-V2y" id="J0Z-0h-RdM"/>
                 <outlet property="replayButton" destination="XLB-Jn-uRv" id="dX0-B6-2OB"/>
