@@ -11,10 +11,6 @@ import UIKit
 class ArtworkView: UIView {
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
-    var frontScrollViews: [UIScrollView] = []
-    let pageImage = ["download","sontung"]
-    var first = false
-    var currentPage = 0
     var images: [UIImageView] = []
 
     override init(frame: CGRect) {
