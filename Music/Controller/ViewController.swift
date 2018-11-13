@@ -14,17 +14,16 @@ protocol ViewControllerDelegate: class {
 }
 
 class ViewController: UIViewController {
-
-
     @IBOutlet weak var playerView: PlayerView!
     @IBOutlet weak var artworkView: ArtworkView!
     @IBOutlet weak var controlView: ControlView!
     var audio = AVAudioPlayer()
     var timer = Timer()
+    weak var delegatePlayerView:ViewControllerDelegate?
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    weak var delegatePlayerView:ViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
