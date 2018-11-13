@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="uiviewcontroller" id="BYZ-38-t0r" customClass="ViewController" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,26 +23,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-5w-DDk" customClass="CustomNavigationBar" customModule="Music" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="20" width="325" height="64"/>
+                                        <rect key="frame" x="25" y="20" width="325" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsn-4w-N7t" customClass="ArtworkView" customModule="Music" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="84" width="325" height="350"/>
+                                        <rect key="frame" x="25" y="74" width="325" height="350"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GaU-Id-gAf">
-                                        <rect key="frame" x="24.5" y="434" width="325" height="233"/>
+                                        <rect key="frame" x="24.5" y="424" width="325" height="243"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDo-Rl-DYa" customClass="SongView" customModule="Music" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="325" height="58.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="61"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xem-NO-qPa" customClass="PlayerView" customModule="Music" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="58.5" width="325" height="49"/>
+                                                <rect key="frame" x="0.0" y="61" width="325" height="51"/>
                                                 <color key="backgroundColor" red="0.066666666669999999" green="0.098039215690000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsD-b0-QFu" customClass="ControlView" customModule="Music" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="115.5" width="325" height="68"/>
+                                                <rect key="frame" x="0.0" y="120.5" width="325" height="70.5"/>
                                                 <color key="backgroundColor" red="0.066666666669999999" green="0.098039215690000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                         </subviews>
@@ -65,13 +65,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.066666666666666666" green="0.098039215686274508" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bxH-5w-DDk" firstAttribute="height" secondItem="jXo-hm-Bxg" secondAttribute="height" multiplier="64:667" id="4Z4-9F-chQ"/>
+                                    <constraint firstItem="bxH-5w-DDk" firstAttribute="height" secondItem="jXo-hm-Bxg" secondAttribute="height" multiplier="44:667" id="4Z4-9F-chQ"/>
                                     <constraint firstItem="bsn-4w-N7t" firstAttribute="centerX" secondItem="jXo-hm-Bxg" secondAttribute="centerX" id="9JY-Em-gYO"/>
                                     <constraint firstItem="bsn-4w-N7t" firstAttribute="height" secondItem="jXo-hm-Bxg" secondAttribute="height" multiplier="350:667" id="DqR-Xz-MsK"/>
                                     <constraint firstItem="GaU-Id-gAf" firstAttribute="width" secondItem="jXo-hm-Bxg" secondAttribute="width" multiplier="325:375" id="EaU-kt-AeF"/>
                                     <constraint firstItem="GaU-Id-gAf" firstAttribute="centerX" secondItem="jXo-hm-Bxg" secondAttribute="centerX" id="L5a-7l-Ipo"/>
                                     <constraint firstItem="GaU-Id-gAf" firstAttribute="top" secondItem="bsn-4w-N7t" secondAttribute="bottom" id="fAX-Fp-jq3"/>
-                                    <constraint firstItem="bsn-4w-N7t" firstAttribute="top" secondItem="bxH-5w-DDk" secondAttribute="bottom" id="gA2-Ho-hWZ"/>
+                                    <constraint firstItem="bsn-4w-N7t" firstAttribute="top" secondItem="bxH-5w-DDk" secondAttribute="bottom" constant="10" id="gA2-Ho-hWZ"/>
                                     <constraint firstItem="bxH-5w-DDk" firstAttribute="width" secondItem="jXo-hm-Bxg" secondAttribute="width" multiplier="325:375" id="gc1-O8-bXM"/>
                                     <constraint firstItem="bxH-5w-DDk" firstAttribute="centerX" secondItem="jXo-hm-Bxg" secondAttribute="centerX" id="kFt-Ql-ZRe"/>
                                     <constraint firstAttribute="bottom" secondItem="GaU-Id-gAf" secondAttribute="bottom" id="nDb-Dc-e7h"/>
@@ -97,51 +97,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-39.200000000000003" y="93.103448275862078"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fVc-IW-xOB">
-            <objects>
-                <viewController id="TB0-O9-RCf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bct-Lu-s63">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Y9s-Ze-wql"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cqq-Zv-Sen" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="870" y="853"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="X2w-oJ-htf">
-            <objects>
-                <viewController id="RSk-3U-v7E" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TpX-Km-HUu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.2156862745" green="0.86816997979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="u4h-pe-FdM"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I1F-pm-kSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="838" y="1127"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tAL-0a-Try">
-            <objects>
-                <viewController id="7iq-ff-xPv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rm1-vi-5GN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="f1B-nA-UTk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oXd-UE-dLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1641" y="103"/>
         </scene>
     </scenes>
 </document>

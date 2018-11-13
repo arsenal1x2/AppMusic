@@ -9,7 +9,6 @@
 import UIKit
 
 class PlayerView: UIView {
-
     @IBOutlet weak var currentTimeLbl: UILabel!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var totalTimeLbl: UILabel!
@@ -22,18 +21,18 @@ class PlayerView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     private func commonInit() {
-        Bundle.main.loadNibNamed("PlayerView", owner: self, options: nil)
-        self.addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        loadNib()
         setupSlider()
-
     }
     private func setupSlider() {
         slider.setThumbImage(UIImage(named: "icons8-record"), for: .normal)
         slider.setThumbImage(UIImage(named: "icons8-record"), for: .highlighted)
-        //slider.maximumValue = Float(audio.duration)
     }
-
+}
+protocol PlayerViewDelegate: class {
+    func setDuration(_ value: Float)
 }

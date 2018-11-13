@@ -10,37 +10,26 @@ import UIKit
 
 import AVFoundation
 class ViewController: UIViewController {
-    func nextSong(sender: ControlView) {
-        print("abc")
-    }
-
-
-    var audio:AVAudioPlayer = AVAudioPlayer()
-    var isPlaying = false
-    var timer:Timer = Timer()
-    
-
     @IBOutlet weak var artworkView: ArtworkView!
     @IBOutlet weak var controlView: ControlView!
+    let audioPlayer = AudioPlayer.sharedInstance
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
-        
-
         controlView.delegate = artworkView
     }
-   func setupViews() {
-        setupAudio()
+
+    func setupViews() {
+
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    func setupAudio() {
-        audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Chi-Yeu-Minh-Em-Chau-Khai-Phong", ofType: "mp3")!))
-        audio.prepareToPlay()
-
     }
 }
 
