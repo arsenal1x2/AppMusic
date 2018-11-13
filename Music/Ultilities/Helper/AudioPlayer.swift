@@ -55,6 +55,7 @@ class AudioPlayer {
             isPlaying = false
         }
     }
+
     func sld_Duration(_ value: Float) {
         let timeToSeek = value * duration
         let time = CMTimeMake(Int64(timeToSeek), 1)

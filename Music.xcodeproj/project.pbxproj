@@ -24,10 +24,6 @@
 		2535BD76219951D100C0FE01 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD75219951D100C0FE01 /* ArtworkView.swift */; };
 		2535BD7B2199820E00C0FE01 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535BD7A2199820E00C0FE01 /* AudioPlayer.swift */; };
 		2589326D219A79F000C0126F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589326C219A79F000C0126F /* UIView+Extension.swift */; };
-		25893273219A842200C0126F /* ControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25893272219A842200C0126F /* ControlViewModel.swift */; };
-		25893278219A88B300C0126F /* ArtworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25893277219A88B300C0126F /* ArtworkViewModel.swift */; };
-		2589327A219A88C700C0126F /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25893279219A88C700C0126F /* PlayerViewModel.swift */; };
-		2589327C219A88D700C0126F /* SongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589327B219A88D700C0126F /* SongViewModel.swift */; };
 		2589327F219A8D3800C0126F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2589327E219A8D3800C0126F /* Constants.swift */; };
 		25893281219AB93400C0126F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25893280219AB93400C0126F /* ViewController+Extension.swift */; };
 		25893283219ABA6900C0126F /* PlayerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25893282219ABA6900C0126F /* PlayerView+Extension.swift */; };
@@ -57,10 +53,6 @@
 		2535BD75219951D100C0FE01 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		2535BD7A2199820E00C0FE01 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2589326C219A79F000C0126F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		25893272219A842200C0126F /* ControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewModel.swift; sourceTree = "<group>"; };
-		25893277219A88B300C0126F /* ArtworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViewModel.swift; sourceTree = "<group>"; };
-		25893279219A88C700C0126F /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
-		2589327B219A88D700C0126F /* SongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewModel.swift; sourceTree = "<group>"; };
 		2589327E219A8D3800C0126F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		25893280219AB93400C0126F /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		25893282219ABA6900C0126F /* PlayerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerView+Extension.swift"; sourceTree = "<group>"; };
@@ -114,7 +106,6 @@
 		252F6D06219147FD00BBCA15 /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				2589326E219A7A6600C0126F /* ViewModel */,
 				2589326B219A79CE00C0126F /* Ultilities */,
 				2535BD78219981E900C0FE01 /* Controller */,
 				2535BD77219981D500C0FE01 /* Model */,
@@ -145,7 +136,6 @@
 		2535BD77219981D500C0FE01 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2535BD7A2199820E00C0FE01 /* AudioPlayer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,53 +207,11 @@
 		2589326B219A79CE00C0126F /* Ultilities */ = {
 			isa = PBXGroup;
 			children = (
+				25893286219AC44100C0126F /* Helper */,
 				2589327D219A8D2400C0126F /* Constant */,
 				2589326A219A711100C0126F /* Extensions */,
 			);
 			path = Ultilities;
-			sourceTree = "<group>";
-		};
-		2589326E219A7A6600C0126F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				25893276219A887E00C0126F /* Artwork */,
-				25893275219A887400C0126F /* Player */,
-				25893274219A886600C0126F /* Song */,
-				25893271219A840E00C0126F /* Control */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		25893271219A840E00C0126F /* Control */ = {
-			isa = PBXGroup;
-			children = (
-				25893272219A842200C0126F /* ControlViewModel.swift */,
-			);
-			path = Control;
-			sourceTree = "<group>";
-		};
-		25893274219A886600C0126F /* Song */ = {
-			isa = PBXGroup;
-			children = (
-				2589327B219A88D700C0126F /* SongViewModel.swift */,
-			);
-			path = Song;
-			sourceTree = "<group>";
-		};
-		25893275219A887400C0126F /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				25893279219A88C700C0126F /* PlayerViewModel.swift */,
-			);
-			path = Player;
-			sourceTree = "<group>";
-		};
-		25893276219A887E00C0126F /* Artwork */ = {
-			isa = PBXGroup;
-			children = (
-				25893277219A88B300C0126F /* ArtworkViewModel.swift */,
-			);
-			path = Artwork;
 			sourceTree = "<group>";
 		};
 		2589327D219A8D2400C0126F /* Constant */ = {
@@ -272,6 +220,14 @@
 				2589327E219A8D3800C0126F /* Constants.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		25893286219AC44100C0126F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2535BD7A2199820E00C0FE01 /* AudioPlayer.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		C83EE5B03602F758E5C13DA9 /* Frameworks */ = {
@@ -383,12 +339,8 @@
 			files = (
 				25893281219AB93400C0126F /* ViewController+Extension.swift in Sources */,
 				2535BD6E21994BE300C0FE01 /* CustomNavigationBar.swift in Sources */,
-				25893278219A88B300C0126F /* ArtworkViewModel.swift in Sources */,
 				25893285219ABB0100C0126F /* ArtworkView+Extension.swift in Sources */,
-				25893273219A842200C0126F /* ControlViewModel.swift in Sources */,
-				2589327C219A88D700C0126F /* SongViewModel.swift in Sources */,
 				2535BD76219951D100C0FE01 /* ArtworkView.swift in Sources */,
-				2589327A219A88C700C0126F /* PlayerViewModel.swift in Sources */,
 				25893283219ABA6900C0126F /* PlayerView+Extension.swift in Sources */,
 				2589327F219A8D3800C0126F /* Constants.swift in Sources */,
 				2535BD7B2199820E00C0FE01 /* AudioPlayer.swift in Sources */,

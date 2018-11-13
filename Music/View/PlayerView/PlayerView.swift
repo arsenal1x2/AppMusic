@@ -28,7 +28,6 @@ class PlayerView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
     @IBAction func sliderChanged(_ sender: Any) {
