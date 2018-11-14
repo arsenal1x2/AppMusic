@@ -18,26 +18,6 @@ extension ArtworkView : ControlViewDelegate {
         frame.origin.x = CGFloat(index) * frame.size.width
         scrollView.scrollRectToVisible(frame, animated: true)
     }
-
-    func backSong(sender: ControlView) {
-        var index = pageController.currentPage
-        if index == 0 {
-            index = images.count - 1
-        } else {
-            index = index - 1
-        }
-        showImage(index: index)
-    }
-
-    func nextSong(sender: ControlView) {
-        var index = pageController.currentPage
-        if index == images.count - 1 {
-            index = 0
-        } else {
-            index = index + 1
-        }
-        showImage(index: index)
-    }
 }
 
 //MARK: UIScrollViewDelegate

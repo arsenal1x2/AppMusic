@@ -6,7 +6,7 @@
 //  Copyright © 2018 LTT. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //MARK: ViewControllerDelegate
 extension PlayerView: ViewControllerDelegate {
@@ -15,3 +15,5 @@ extension PlayerView: ViewControllerDelegate {
         updateFrame(with: timeDuration, timeTotal: timeTotal, duration: duration)
     }
 }
+
+

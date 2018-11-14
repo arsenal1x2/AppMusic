@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25253881219C0FEE00F7EA25 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25253880219C0FEE00F7EA25 /* PageViewController.swift */; };
+		25253883219C161800F7EA25 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25253882219C161800F7EA25 /* Int+Extension.swift */; };
 		252F6D08219147FD00BBCA15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F6D07219147FD00BBCA15 /* AppDelegate.swift */; };
 		252F6D0A219147FD00BBCA15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F6D09219147FD00BBCA15 /* ViewController.swift */; };
 		252F6D0D219147FD00BBCA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 252F6D0B219147FD00BBCA15 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25253880219C0FEE00F7EA25 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		25253882219C161800F7EA25 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		252F6D04219147FD00BBCA15 /* Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		252F6D07219147FD00BBCA15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		252F6D09219147FD00BBCA15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				252F6D09219147FD00BBCA15 /* ViewController.swift */,
+				25253880219C0FEE00F7EA25 /* PageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				25893280219AB93400C0126F /* ViewController+Extension.swift */,
 				25893282219ABA6900C0126F /* PlayerView+Extension.swift */,
 				25893284219ABB0100C0126F /* ArtworkView+Extension.swift */,
+				25253882219C161800F7EA25 /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -338,11 +344,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				25893281219AB93400C0126F /* ViewController+Extension.swift in Sources */,
+				25253883219C161800F7EA25 /* Int+Extension.swift in Sources */,
 				2535BD6E21994BE300C0FE01 /* CustomNavigationBar.swift in Sources */,
 				25893285219ABB0100C0126F /* ArtworkView+Extension.swift in Sources */,
 				2535BD76219951D100C0FE01 /* ArtworkView.swift in Sources */,
 				25893283219ABA6900C0126F /* PlayerView+Extension.swift in Sources */,
 				2589327F219A8D3800C0126F /* Constants.swift in Sources */,
+				25253881219C0FEE00F7EA25 /* PageViewController.swift in Sources */,
 				2535BD7B2199820E00C0FE01 /* AudioPlayer.swift in Sources */,
 				2535BD63219943E800C0FE01 /* ControlView.swift in Sources */,
 				2535BD7221994E0300C0FE01 /* PlayerView.swift in Sources */,

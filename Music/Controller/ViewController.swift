@@ -14,16 +14,14 @@ protocol ViewControllerDelegate: class {
 }
 
 class ViewController: UIViewController {
+    @IBOutlet weak var songView: SongView!
+    @IBOutlet weak var navigationbar: CustomNavigationBar!
     @IBOutlet weak var playerView: PlayerView!
-    @IBOutlet weak var artworkView: ArtworkView!
     @IBOutlet weak var controlView: ControlView!
     var audio = AVAudioPlayer()
     var timer = Timer()
     weak var delegatePlayerView:ViewControllerDelegate?
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +32,10 @@ class ViewController: UIViewController {
         controlView.delegateViewController = self
         self.delegatePlayerView = playerView
         playerView.delegate = self
-        controlView.delegateArtworkView = artworkView
-        audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Chi-Yeu-Minh-Em-Chau-Khai-Phong", ofType: ".mp3")!))
+        navigationbar.delegate = self
+        songView.delegate = self
+
+        audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: Constants.NameSong, ofType: Constants.FileType.mp3)!))
         audio.prepareToPlay()
         playerView.slider.maximumValue = Float(audio.duration)
     }
@@ -46,23 +46,9 @@ class ViewController: UIViewController {
     }
 
     @objc func updateTime() {
-        let minute: Int = Int(audio.currentTime / 60)
-        let second: Int = Int(audio.currentTime.truncatingRemainder(dividingBy: 60))
-        var durationTime = ""
-        let totalTime = "3:20"
-        var duration: Float = 1
-        if (second < 10 && minute < 10) {
-            durationTime = "0\(minute):0\(second) "
-        } else {
-            if second < 10 {
-                durationTime = "\(minute):0\(second) "
-            } else if minute < 10 {
-                durationTime = "0\(minute):\(second) "
-            } else {
-                durationTime = "\(minute):\(second) "
-            }
-        }
-        duration = Float(audio.currentTime)
+        let totalTime = Int.convertToTimeString(time: audio.duration)
+        let duration = Float(audio.currentTime)
+        let durationTime = Int.convertToTimeString(time: audio.currentTime)
         delegatePlayerView?.updatePlayerView(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
     }
 }

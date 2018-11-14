@@ -30,18 +30,19 @@ class PlayerView: UIView {
         super.awakeFromNib()
     }
 
-    @IBAction func sliderChanged(_ sender: Any) {
-        let value = slider.value
-        delegate?.sliderDidChanged(value: value, sender: self)
-    }
-
     private func commonInit() {
         loadNib()
         setupSlider()
     }
     private func setupSlider() {
-        slider.setThumbImage(UIImage(named: icon.slider), for: .normal)
-        slider.setThumbImage(UIImage(named: icon.slider), for: .highlighted)
+        slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .normal)
+        slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .highlighted)
+        let event = UIControlEvents.touchUpInside.rawValue | UIControlEvents.touchUpOutside.rawValue
+        slider.addTarget(self, action: #selector(printA), for: UIControlEvents(rawValue: event))
+    }
+    @objc private func printA() {
+        let value = slider.value
+        delegate?.sliderDidChanged(value: value, sender: self)
     }
 
     func updateFrame(with timeDuration: String, timeTotal: String, duration: Float) {

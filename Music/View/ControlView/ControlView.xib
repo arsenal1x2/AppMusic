@@ -35,6 +35,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIV-QZ-8b5">
                                     <rect key="frame" x="0.0" y="0.0" width="39.5" height="68"/>
                                     <state key="normal" image="icons8-shuffle "/>
+                                    <connections>
+                                        <action selector="clickSuffleButton:" destination="-1" eventType="touchUpInside" id="Zgq-CB-yVB"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7F-Jt-auX">
                                     <rect key="frame" x="39.5" y="0.0" width="84" height="68"/>
@@ -63,6 +66,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-Jn-uRv">
                                     <rect key="frame" x="275.5" y="0.0" width="39.5" height="68"/>
                                     <state key="normal" image="icons8-repeat "/>
+                                    <connections>
+                                        <action selector="clickReplayButton:" destination="-1" eventType="touchUpInside" id="lp5-mP-GL6"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

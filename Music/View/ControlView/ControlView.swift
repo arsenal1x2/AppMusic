@@ -9,20 +9,22 @@
 import UIKit
 
 @objc protocol ControlViewDelegate: class {
-    @objc optional func nextSong(sender: ControlView)
-    @objc optional func backSong(sender: ControlView)
-    @objc optional func play(sender: ControlView)
-    @objc optional func stop(sender: ControlView)
+    @objc optional func controlview(_ controlview: ControlView, didSelectNextButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectBackButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectPlayButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectPauseButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectShuffleButton: UIButton)
 }
 
-class ControlView: UIView {
+class ControlView: UIView, UITableViewDelegate{
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     weak var delegateViewController: ControlViewDelegate?
-    weak var delegateArtworkView: ControlViewDelegate?
+
     var isPlaying = false
 
     override init(frame: CGRect) {
@@ -40,22 +42,31 @@ class ControlView: UIView {
     }
 
     @IBAction func clickPlayButton(_ sender: Any) {
+        guard let delegate = delegateViewController else { return }
         if !isPlaying {
-            playButton.setImage(UIImage(named: icon.stop), for: .normal)
-            guard let delegate = delegateViewController else { return }
-            delegate.play?(sender: self)
+            playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
+            delegate.controlview?(self, didSelectPlayButton: playButton)
         } else {
-            playButton.setImage(UIImage(named: icon.play), for: .normal)
-            delegateViewController?.stop?(sender: self)
+            playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
+            delegate.controlview?(self, didSelectPauseButton: playButton)
+
         }
         isPlaying = !isPlaying
     }
 
+    @IBAction func clickReplayButton(_ sender: Any) {
+        delegateViewController?.controlview?(self, didSelectReplayButton: replayButton)
+    }
+
+    @IBAction func clickSuffleButton(_ sender: Any) {
+        delegateViewController?.controlview?(self, didSelectShuffleButton: shuffleButton)
+    }
+
     @IBAction func clickbackButton(_ sender: Any) {
-        delegateArtworkView?.backSong?(sender: self)
+        delegateViewController?.controlview?(self, didSelectBackButton: backButton)
     }
 
     @IBAction func clickNextButton(_ sender: Any) {
-        delegateArtworkView?.nextSong?(sender: self)
+        delegateViewController?.controlview?(self, didSelectNextButton: nextButton)
     }
 }

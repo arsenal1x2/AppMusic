@@ -34,8 +34,8 @@ class ArtworkView: UIView {
     }
 
     func createImages() -> [UIImageView] {
-        let imgView1 = UIImageView(image: UIImage(named: "download")!)
-        let imgView2 = UIImageView(image: UIImage(named: "sontung")!)
+        let imgView1 = UIImageView(image: UIImage(named: Constants.Image.arsenal)!)
+        let imgView2 = UIImageView(image: UIImage(named: Constants.Image.sontung)!)
         return [imgView1,imgView2]
     }
 

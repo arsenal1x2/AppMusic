@@ -11,7 +11,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationBar" customModule="Music" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationBar" customModule="Music" customModuleProvider="target">
+            <connections>
+                <outlet property="leftItemBtn" destination="1oL-gQ-dfG" id="poi-Cx-TUW"/>
+                <outlet property="rightItemBtn" destination="1Eq-Om-FKg" id="PEE-74-OAZ"/>
+                <outlet property="titleLbl" destination="aAg-lR-vxr" id="1pw-AV-4UQ"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="325" height="44"/>
@@ -23,6 +29,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oL-gQ-dfG">
                             <rect key="frame" x="0.0" y="0.0" width="28" height="44"/>
                             <state key="normal" image="icons8-expand-arrow "/>
+                            <connections>
+                                <action selector="clickLeftItemBtn:" destination="-1" eventType="touchUpInside" id="mJ8-Mv-cVl"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iOR-YZ-YY0">
                             <rect key="frame" x="28" y="0.0" width="269" height="44"/>
@@ -44,6 +53,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Eq-Om-FKg">
                             <rect key="frame" x="297" y="0.0" width="28" height="44"/>
                             <state key="normal" image="icons8-list "/>
+                            <connections>
+                                <action selector="clickRighBtn:" destination="-1" eventType="touchUpInside" id="Yf8-YW-Dd9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
