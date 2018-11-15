@@ -10,9 +10,9 @@ import Foundation
 
 class ListSong {
     var listSong: [Song]
+    var indexOfConcurentSong: Int = 0
 
     init() {
-
         var tmp:[Song] = [Song]()
         let listTitle = ["Chỉ yêu mình em", "Trót yêu", "Chiều hôm ấy", "Đổi thay", "Tim anh thắt lại"]
         let listName = [
@@ -40,9 +40,7 @@ class ListSong {
             tmp.append(song!)
         }
         self.listSong = tmp
-
     }
-    var indexOfConcurentSong: Int = 0
 
     func Next() -> Song {
         if indexOfConcurentSong == listSong.count - 1 {
@@ -52,6 +50,7 @@ class ListSong {
         }
         return listSong[indexOfConcurentSong]
     }
+    
     func Previous() -> Song {
         if indexOfConcurentSong == 0 {
             indexOfConcurentSong = listSong.count - 1

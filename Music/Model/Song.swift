@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Song {
+class Song: NSObject {
     var name:String
     var singer:String
     var image:UIImage
     var title:String
 
-    init() {
+    override init() {
         name = ""
         singer = ""
         image = UIImage()

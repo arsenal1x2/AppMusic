@@ -10,8 +10,9 @@ import UIKit
 
 //MARK: ViewController Delegate
 extension ControlView: ViewControllerDelegate {
-    func viewcontroller(_ viewcontroller: ViewController, didNextSong: Bool) {
+    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song) {
         isPlaying = true
         playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
     }
+    
 }

@@ -12,7 +12,7 @@ import AVFoundation
 @objc protocol ViewControllerDelegate: class {
     @objc optional func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float)
     @objc optional func viewcontroller(_ viewcontroller: ViewController, isCompleted: Bool)
-    @objc optional func viewcontroller(_ viewcontroller:ViewController, didNextSong: Bool)
+    @objc optional func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song)
 }
 
 class ViewController: UIViewController {
@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var timer = Timer()
     weak var delegatePlayerView: ViewControllerDelegate?
     weak var delegateControlView: ViewControllerDelegate?
+    weak var delegateSongView: ViewControllerDelegate?
     let listSong:ListSong = ListSong()
 
     override func viewDidLoad() {
@@ -38,10 +39,13 @@ class ViewController: UIViewController {
         navigationbar.delegate = self
         songView.delegate = self
         self.delegateControlView = controlView
+        self.delegateSongView = songView 
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: listSong.listSong[0].name, ofType: Constants.FileType.mp3)!))
         audio.prepareToPlay()
 
         playerView.slider.maximumValue = Float(audio.duration)
+        songView.nameSongLbl.text = listSong.listSong[0].title
+        songView.nameSingerLbl.text = listSong.listSong[0].singer
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,14 +62,18 @@ class ViewController: UIViewController {
     func nextSong() {
         stop()
         resetUI()
-        playSong(song: listSong.Next())
-        delegateControlView?.viewcontroller?(self, didNextSong: true)
+        let song = listSong.Next()
+        playSong(song: song)
+        delegateControlView?.viewcontroller?(self, songDidChanged: song)
+        delegateSongView?.viewcontroller?(self, songDidChanged: song)
     }
     func previousSong() {
         stop()
         resetUI()
-        playSong(song: listSong.Previous())
-        delegateControlView?.viewcontroller?(self, didNextSong: true)
+        let song = listSong.Previous()
+        playSong(song: song)
+        delegateControlView?.viewcontroller?(self, songDidChanged: song)
+        delegateSongView?.viewcontroller?(self, songDidChanged: song)
     }
     func resetUI() {
         playerView.slider.maximumValue = Float(audio.duration)
@@ -90,6 +98,6 @@ class ViewController: UIViewController {
 }
 extension ViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-
+        
     }
 }
