@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+
 class AudioPlayer {
     static let  sharedInstance = AudioPlayer()
     var pathString = ""

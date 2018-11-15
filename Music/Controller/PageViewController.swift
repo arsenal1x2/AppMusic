@@ -10,54 +10,48 @@ import UIKit
 
 class PageViewController: UIPageViewController {
 
-    private(set) lazy var arrViewController: [UIViewController] = {
-        return [
-            initViewController(id: Constants.StoryboardId.slideFirstVC),
-            initViewController(id: Constants.StoryboardId.slideSecondVC),
-            initViewController(id: Constants.StoryboardId.slideThirdVC)
-        ]
+    private(set) lazy var arrayViewController: [ImageViewController] = [ImageViewController]()
+    private(set) lazy var arrayImageName:[String] = {
+        return [Constants.Image.sontung, Constants.Image.arsenal, Constants.Image.picture]
     }()
+    private(set) lazy var pageControl = UIPageControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         dataSource = self
-        if let firstViewController =  arrViewController.first {
-            setViewControllers([firstViewController], direction: .reverse, animated: true, completion: nil)
+        if let firstViewController =  arrayViewController.first {
+            setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
+            firstViewController.pictureImg.image = UIImage(named: (arrayImageName.first)!)
+
         }
+        configurePageControl()
+        self.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func configurePageControl() {
+            pageControl = UIPageControl(frame: CGRect(x: 0,y:self.view.frame.midY - 10,width: self.view.bounds.width,height: 50))
+            self.pageControl.numberOfPages = arrayImageName.count
+            self.pageControl.currentPage = 0
+            self.pageControl.tintColor = UIColor.black
+            self.pageControl.pageIndicatorTintColor = UIColor.white
+            self.pageControl.currentPageIndicatorTintColor = UIColor.black
+            self.view.addSubview(pageControl)
+    }
 
-    private func initViewController(id: String) -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc =  storyboard.instantiateViewController(withIdentifier: id)
-        return vc
+    func loadData() {
+        for index in 0...arrayImageName.count - 1 {
+            let storyboard = UIStoryboard.init(storyboard: .main)
+            let viewcontroller:ImageViewController = storyboard.instantiateViewController()
+            viewcontroller.loadView()
+            guard let image = UIImage(named: arrayImageName[index]) else { return }
+            viewcontroller.loadImage(image: image)
+            arrayViewController.append(viewcontroller)
+        }
     }
 }
 
-//MARK: PageViewControllerDataSource
-extension PageViewController:UIPageViewControllerDataSource {
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let indexViewController = arrViewController.index(of: viewController) else {
-            return nil
-        }
-        let previousIndex = indexViewController - 1
-        if (previousIndex < 0) { return arrViewController.last }
-        if (previousIndex >= arrViewController.count) { return nil }
-        return arrViewController[previousIndex]
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let indexViewController = arrViewController.index(of: viewController) else {
-            return nil
-        }
-        let previousIndex = indexViewController + 1
-        if (previousIndex > arrViewController.count) { return nil }
-        if (previousIndex == arrViewController.count) { return arrViewController.first }
-        return arrViewController[previousIndex]
-    }
-}

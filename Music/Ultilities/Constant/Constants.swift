@@ -22,17 +22,8 @@ struct Constants {
         static let picture = "picture2"
     }
 
-    struct StoryboardId {
-        static let slideFirstVC = "first"
-        static let slideSecondVC = "second"
-        static let slideThirdVC = "third"
-    }
-
     struct FileType {
         static let mp3 = ".mp3"
-    }
-    struct StoryboardName {
-        static let main = "Main"
     }
 
     static let NameSong = "Chi-Yeu-Minh-Em-Chau-Khai-Phong"
