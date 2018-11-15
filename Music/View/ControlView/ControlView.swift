@@ -24,7 +24,6 @@ class ControlView: UIView, UITableViewDelegate{
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     weak var delegateViewController: ControlViewDelegate?
-
     var isPlaying = false
 
     override init(frame: CGRect) {
@@ -42,6 +41,11 @@ class ControlView: UIView, UITableViewDelegate{
     }
 
     @IBAction func clickPlayButton(_ sender: Any) {
+        handle(isPlaying: isPlaying)
+        isPlaying = !isPlaying
+    }
+
+    func handle(isPlaying: Bool) {
         guard let delegate = delegateViewController else { return }
         if !isPlaying {
             playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
@@ -51,7 +55,6 @@ class ControlView: UIView, UITableViewDelegate{
             delegate.controlview?(self, didSelectPauseButton: playButton)
 
         }
-        isPlaying = !isPlaying
     }
 
     @IBAction func clickReplayButton(_ sender: Any) {
@@ -63,10 +66,14 @@ class ControlView: UIView, UITableViewDelegate{
     }
 
     @IBAction func clickbackButton(_ sender: Any) {
+        playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
+        isPlaying = false
         delegateViewController?.controlview?(self, didSelectBackButton: backButton)
     }
 
     @IBAction func clickNextButton(_ sender: Any) {
+        playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
+        isPlaying = false
         delegateViewController?.controlview?(self, didSelectNextButton: nextButton)
     }
 }

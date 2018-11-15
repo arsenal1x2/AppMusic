@@ -9,8 +9,10 @@
 import UIKit
 import AVFoundation
 
-protocol ViewControllerDelegate: class {
-    func updatePlayerView(timeDuration: String, timeTotal:String, duration:Float)
+@objc protocol ViewControllerDelegate: class {
+    @objc optional func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float)
+    @objc optional func viewcontroller(_ viewcontroller: ViewController, isCompleted: Bool)
+    @objc optional func viewcontroller(_ viewcontroller:ViewController, didNextSong: Bool)
 }
 
 class ViewController: UIViewController {
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
     var audio = AVAudioPlayer()
     var timer = Timer()
     weak var delegatePlayerView: ViewControllerDelegate?
+    weak var delegateControlView: ViewControllerDelegate?
     let listSong:ListSong = ListSong()
 
     override func viewDidLoad() {
@@ -34,6 +37,7 @@ class ViewController: UIViewController {
         playerView.delegate = self
         navigationbar.delegate = self
         songView.delegate = self
+        self.delegateControlView = controlView
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: listSong.listSong[0].name, ofType: Constants.FileType.mp3)!))
         audio.prepareToPlay()
 
@@ -49,24 +53,26 @@ class ViewController: UIViewController {
         let totalTime = Int.convertToTimeString(time: audio.duration)
         let duration = Float(audio.currentTime)
         let durationTime = Int.convertToTimeString(time: audio.currentTime)
-        delegatePlayerView?.updatePlayerView(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
+        delegatePlayerView?.updatePlayerView?(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
     }
     func nextSong() {
         stop()
         resetUI()
         playSong(song: listSong.Next())
+        delegateControlView?.viewcontroller?(self, didNextSong: true)
     }
     func previousSong() {
         stop()
         resetUI()
         playSong(song: listSong.Previous())
+        delegateControlView?.viewcontroller?(self, didNextSong: true)
     }
     func resetUI() {
         playerView.slider.maximumValue = Float(audio.duration)
         let totalTime = Int.convertToTimeString(time: audio.duration)
         let duration = Float(audio.currentTime)
         let durationTime = "0:00"
-        delegatePlayerView?.updatePlayerView(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
+        delegatePlayerView?.updatePlayerView?(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
     }
     func playSong(song: Song) {
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: song.name, ofType: Constants.FileType.mp3)!))

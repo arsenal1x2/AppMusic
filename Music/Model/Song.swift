@@ -28,7 +28,7 @@ class Song {
         self.title = title
     }
 
-    init?(name: String, singer: String , image: String, title: String) {
+    init? (name: String, singer: String , image: String, title: String) {
         self.name = name
         self.singer = singer
         guard let image = UIImage(named: image) else { return nil }

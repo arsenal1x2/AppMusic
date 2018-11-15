@@ -33,6 +33,7 @@ class PageViewController: UIPageViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func configurePageControl() {
             pageControl = UIPageControl(frame: CGRect(x: 0,y:self.view.frame.midY - 10,width: self.view.bounds.width,height: 50))
             self.pageControl.numberOfPages = viewcontroller.listSong.listSong.count
