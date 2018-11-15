@@ -40,12 +40,10 @@ class ViewController: UIViewController {
         playerView.delegate = self
         navigationbar.delegate = self
         songView.delegate = self
-
         self.delegateControlView = controlView
         self.delegateSongView = songView 
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: listSong.listSong[0].name, ofType: Constants.FileType.mp3)!))
         audio.prepareToPlay()
-
         playerView.slider.maximumValue = Float(audio.duration)
         songView.nameSongLbl.text = listSong.listSong[0].title
         songView.nameSingerLbl.text = listSong.listSong[0].singer
