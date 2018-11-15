@@ -12,6 +12,11 @@
 		251CABD4219D080A00E027CE /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CABD3219D080A00E027CE /* ImageViewController.swift */; };
 		251CABD6219D25AC00E027CE /* PageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CABD5219D25AC00E027CE /* PageViewController+Extension.swift */; };
 		251CABD8219D261000E027CE /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CABD7219D261000E027CE /* Song.swift */; };
+		251CABDD219D3F1D00E027CE /* DoiThay-HoQuangHieu-4563803.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 251CABD9219D3F1C00E027CE /* DoiThay-HoQuangHieu-4563803.mp3 */; };
+		251CABDE219D3F1D00E027CE /* TimAnhThatLai-HoQuangHieu-5664511.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 251CABDA219D3F1C00E027CE /* TimAnhThatLai-HoQuangHieu-5664511.mp3 */; };
+		251CABDF219D3F1D00E027CE /* TrotYeu-TrungQuanIdol-2967468.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 251CABDB219D3F1D00E027CE /* TrotYeu-TrungQuanIdol-2967468.mp3 */; };
+		251CABE0219D3F1D00E027CE /* ChieuHomAy-JayKii-5076088.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 251CABDC219D3F1D00E027CE /* ChieuHomAy-JayKii-5076088.mp3 */; };
+		251CABE2219D40F100E027CE /* ListSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CABE1219D40F100E027CE /* ListSong.swift */; };
 		25253881219C0FEE00F7EA25 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25253880219C0FEE00F7EA25 /* PageViewController.swift */; };
 		25253883219C161800F7EA25 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25253882219C161800F7EA25 /* Int+Extension.swift */; };
 		252F6D08219147FD00BBCA15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F6D07219147FD00BBCA15 /* AppDelegate.swift */; };
@@ -46,6 +51,11 @@
 		251CABD3219D080A00E027CE /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		251CABD5219D25AC00E027CE /* PageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewController+Extension.swift"; sourceTree = "<group>"; };
 		251CABD7219D261000E027CE /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		251CABD9219D3F1C00E027CE /* DoiThay-HoQuangHieu-4563803.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "DoiThay-HoQuangHieu-4563803.mp3"; sourceTree = "<group>"; };
+		251CABDA219D3F1C00E027CE /* TimAnhThatLai-HoQuangHieu-5664511.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "TimAnhThatLai-HoQuangHieu-5664511.mp3"; sourceTree = "<group>"; };
+		251CABDB219D3F1D00E027CE /* TrotYeu-TrungQuanIdol-2967468.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "TrotYeu-TrungQuanIdol-2967468.mp3"; sourceTree = "<group>"; };
+		251CABDC219D3F1D00E027CE /* ChieuHomAy-JayKii-5076088.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ChieuHomAy-JayKii-5076088.mp3"; sourceTree = "<group>"; };
+		251CABE1219D40F100E027CE /* ListSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSong.swift; sourceTree = "<group>"; };
 		25253880219C0FEE00F7EA25 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		25253882219C161800F7EA25 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		252F6D04219147FD00BBCA15 /* Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +109,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		251CABE3219D4D6F00E027CE /* List MP3 */ = {
+			isa = PBXGroup;
+			children = (
+				25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */,
+				251CABDC219D3F1D00E027CE /* ChieuHomAy-JayKii-5076088.mp3 */,
+				251CABD9219D3F1C00E027CE /* DoiThay-HoQuangHieu-4563803.mp3 */,
+				251CABDA219D3F1C00E027CE /* TimAnhThatLai-HoQuangHieu-5664511.mp3 */,
+				251CABDB219D3F1D00E027CE /* TrotYeu-TrungQuanIdol-2967468.mp3 */,
+			);
+			path = "List MP3";
+			sourceTree = "<group>";
+		};
 		252F6CFB219147FD00BBCA15 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +146,7 @@
 				2535BD78219981E900C0FE01 /* Controller */,
 				2535BD77219981D500C0FE01 /* Model */,
 				2535BD64219943EF00C0FE01 /* View */,
-				25F234F521951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 */,
+				251CABE3219D4D6F00E027CE /* List MP3 */,
 				252F6D07219147FD00BBCA15 /* AppDelegate.swift */,
 				252F6D0B219147FD00BBCA15 /* Main.storyboard */,
 				252F6D0E219147FF00BBCA15 /* Assets.xcassets */,
@@ -247,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				2535BD7A2199820E00C0FE01 /* AudioPlayer.swift */,
+				251CABE1219D40F100E027CE /* ListSong.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -318,10 +341,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251CABDF219D3F1D00E027CE /* TrotYeu-TrungQuanIdol-2967468.mp3 in Resources */,
+				251CABE0219D3F1D00E027CE /* ChieuHomAy-JayKii-5076088.mp3 in Resources */,
 				252F6D12219147FF00BBCA15 /* LaunchScreen.storyboard in Resources */,
 				2535BD662199494B00C0FE01 /* SongView.xib in Resources */,
 				25F234F821953D750020DF64 /* ControlView.xib in Resources */,
+				251CABDE219D3F1D00E027CE /* TimAnhThatLai-HoQuangHieu-5664511.mp3 in Resources */,
 				2535BD74219951B600C0FE01 /* ArtworkView.xib in Resources */,
+				251CABDD219D3F1D00E027CE /* DoiThay-HoQuangHieu-4563803.mp3 in Resources */,
 				252F6D0F219147FF00BBCA15 /* Assets.xcassets in Resources */,
 				25F234F621951D580020DF64 /* Chi-Yeu-Minh-Em-Chau-Khai-Phong.mp3 in Resources */,
 				2535BD6C21994BD200C0FE01 /* CustomNavigationBar.xib in Resources */,
@@ -358,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251CABE2219D40F100E027CE /* ListSong.swift in Sources */,
 				251CABD8219D261000E027CE /* Song.swift in Sources */,
 				251CABD2219D04EC00E027CE /* UIViewController+Extension.swift in Sources */,
 				251CABD6219D25AC00E027CE /* PageViewController+Extension.swift in Sources */,

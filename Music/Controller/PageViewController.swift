@@ -8,12 +8,15 @@
 
 import UIKit
 
+protocol PageViewControllerDelegate: class {
+    func pageview(_ pageview:PageViewController, transitionCompleted: Bool)
+}
+
 class PageViewController: UIPageViewController {
     private(set) lazy var arrayViewController: [ImageViewController] = [ImageViewController]()
-    private(set) lazy var arrayImageName:[String] = {
-        return [Constants.Image.sontung, Constants.Image.arsenal, Constants.Image.picture]
-    }()
+    var viewcontroller:ViewController = ViewController()
     private(set) lazy var pageControl = UIPageControl()
+    weak var pageViewDelegate: PageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,6 @@ class PageViewController: UIPageViewController {
         dataSource = self
         if let firstViewController =  arrayViewController.first {
             setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
-            firstViewController.pictureImg.image = UIImage(named: (arrayImageName.first)!)
         }
         configurePageControl()
         self.delegate = self
@@ -33,7 +35,7 @@ class PageViewController: UIPageViewController {
     }
     func configurePageControl() {
             pageControl = UIPageControl(frame: CGRect(x: 0,y:self.view.frame.midY - 10,width: self.view.bounds.width,height: 50))
-            self.pageControl.numberOfPages = arrayImageName.count
+            self.pageControl.numberOfPages = viewcontroller.listSong.listSong.count
             self.pageControl.currentPage = 0
             self.pageControl.tintColor = UIColor.black
             self.pageControl.pageIndicatorTintColor = UIColor.white
@@ -42,13 +44,12 @@ class PageViewController: UIPageViewController {
     }
 
     func loadData() {
-        for index in 0...arrayImageName.count - 1 {
+        for index in 0...viewcontroller.listSong.listSong.count - 1 {
             let storyboard = UIStoryboard.init(storyboard: .main)
-            let viewcontroller:ImageViewController = storyboard.instantiateViewController()
-            viewcontroller.loadView()
-            guard let image = UIImage(named: arrayImageName[index]) else { return }
-            viewcontroller.loadImage(image: image)
-            arrayViewController.append(viewcontroller)
+            let vc:ImageViewController = storyboard.instantiateViewController()
+            vc.loadView()
+            vc.loadImage(image: viewcontroller.listSong.listSong[index].image)
+            arrayViewController.append(vc)
         }
     }
 }

@@ -13,21 +13,19 @@ import UIKit
 extension ViewController: ControlViewDelegate{
 
     func controlview(_ controlview: ControlView, didSelectPlayButton: UIButton) {
-        audio.play()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        play()
     }
 
     func controlview(_ controlview: ControlView, didSelectPauseButton: UIButton) {
-        audio.stop()
-        timer.invalidate()
+        stop()
     }
 
     func controlview(_ controlview: ControlView, didSelectNextButton: UIButton) {
-        print("Next")
+        nextSong()
     }
 
     func controlview(_ controlview: ControlView, didSelectBackButton: UIButton) {
-        print("Back")
+        previousSong()
     }
 
     func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton) {

@@ -18,7 +18,6 @@ extension PageViewController:UIPageViewControllerDataSource {
         var previousIndex = indexViewController - 1
         if (previousIndex < 0) { previousIndex = arrayViewController.count - 1 }
         if (previousIndex >= arrayViewController.count) { return nil }
-        //   print(UIImage(named: arrayImageName[previousIndex]))
         return arrayViewController[previousIndex]
     }
 
@@ -29,7 +28,6 @@ extension PageViewController:UIPageViewControllerDataSource {
         let nextIndex = indexViewController + 1
         if (nextIndex > arrayViewController.count) { return nil }
         if (nextIndex == arrayViewController.count) { return arrayViewController.first }
-        //  arrayViewController[nextIndex].pictureImg.image = UIImage(named: arrayImageName[nextIndex])
         return arrayViewController[nextIndex]
     }
 }
@@ -39,5 +37,6 @@ extension PageViewController:UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
         self.pageControl.currentPage = arrayViewController.index(of: pageContentViewController as! ImageViewController)!
+
     }
 }
