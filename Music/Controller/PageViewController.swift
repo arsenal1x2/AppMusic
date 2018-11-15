@@ -9,7 +9,6 @@
 import UIKit
 
 class PageViewController: UIPageViewController {
-
     private(set) lazy var arrayViewController: [ImageViewController] = [ImageViewController]()
     private(set) lazy var arrayImageName:[String] = {
         return [Constants.Image.sontung, Constants.Image.arsenal, Constants.Image.picture]
@@ -23,7 +22,6 @@ class PageViewController: UIPageViewController {
         if let firstViewController =  arrayViewController.first {
             setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
             firstViewController.pictureImg.image = UIImage(named: (arrayImageName.first)!)
-
         }
         configurePageControl()
         self.delegate = self

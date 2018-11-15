@@ -22,4 +22,9 @@ class ImageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func loadImage(image: UIImage) {
+        pictureImg.image = image
+    }
+
 }
