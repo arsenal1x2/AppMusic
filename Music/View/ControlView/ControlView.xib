@@ -65,7 +65,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-Jn-uRv">
                                     <rect key="frame" x="275.5" y="0.0" width="39.5" height="68"/>
-                                    <state key="normal" image="icons8-repeat "/>
+                                    <state key="normal" image="icons8-repeat"/>
                                     <connections>
                                         <action selector="clickReplayButton:" destination="-1" eventType="touchUpInside" id="lp5-mP-GL6"/>
                                     </connections>
@@ -103,7 +103,7 @@
     <resources>
         <image name="211876-128" width="42" height="42"/>
         <image name="icons8-end " width="26" height="26"/>
-        <image name="icons8-repeat " width="15" height="15"/>
+        <image name="icons8-repeat" width="15" height="15"/>
         <image name="icons8-shuffle " width="15" height="15"/>
         <image name="icons8-skip-to-start " width="26" height="26"/>
     </resources>

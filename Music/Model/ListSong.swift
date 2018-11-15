@@ -50,7 +50,7 @@ class ListSong {
         }
         return listSong[indexOfConcurentSong]
     }
-    
+
     func Previous() -> Song {
         if indexOfConcurentSong == 0 {
             indexOfConcurentSong = listSong.count - 1

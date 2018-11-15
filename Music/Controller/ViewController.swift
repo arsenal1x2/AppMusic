@@ -13,6 +13,7 @@ import AVFoundation
     @objc optional func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float)
     @objc optional func viewcontroller(_ viewcontroller: ViewController, isCompleted: Bool)
     @objc optional func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song)
+    @objc optional func viewcontroller(_ viewcontroller: ViewController, didStopSong: Song)
 }
 
 class ViewController: UIViewController {
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
     weak var delegateControlView: ViewControllerDelegate?
     weak var delegateSongView: ViewControllerDelegate?
     let listSong:ListSong = ListSong()
+    var isReplay = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,7 @@ class ViewController: UIViewController {
         playerView.delegate = self
         navigationbar.delegate = self
         songView.delegate = self
+
         self.delegateControlView = controlView
         self.delegateSongView = songView 
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: listSong.listSong[0].name, ofType: Constants.FileType.mp3)!))
@@ -85,6 +88,7 @@ class ViewController: UIViewController {
     func playSong(song: Song) {
         audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: song.name, ofType: Constants.FileType.mp3)!))
         audio.prepareToPlay()
+        audio.delegate = self
         play()
     }
     func play() {
@@ -96,8 +100,4 @@ class ViewController: UIViewController {
         timer.invalidate()
     }
 }
-extension ViewController: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        
-    }
-}
+

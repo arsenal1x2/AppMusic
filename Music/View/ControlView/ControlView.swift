@@ -13,7 +13,7 @@ import UIKit
     @objc optional func controlview(_ controlview: ControlView, didSelectBackButton: UIButton)
     @objc optional func controlview(_ controlview: ControlView, didSelectPlayButton: UIButton)
     @objc optional func controlview(_ controlview: ControlView, didSelectPauseButton: UIButton)
-    @objc optional func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton, isReplay: Bool)
     @objc optional func controlview(_ controlview: ControlView, didSelectShuffleButton: UIButton)
 }
 
@@ -25,7 +25,7 @@ class ControlView: UIView, UITableViewDelegate{
     @IBOutlet weak var playButton: UIButton!
     weak var delegateViewController: ControlViewDelegate?
     var isPlaying = false
-
+    var isReplay = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -57,8 +57,17 @@ class ControlView: UIView, UITableViewDelegate{
         }
     }
 
+
+
     @IBAction func clickReplayButton(_ sender: Any) {
-        delegateViewController?.controlview?(self, didSelectReplayButton: replayButton)
+        if isReplay {
+           replayButton.setImage(UIImage(named: Constants.Icon.repeat2), for: .normal)
+            isReplay = false
+        } else {
+           replayButton.setImage(UIImage(named: Constants.Icon.repeat1), for: .normal)
+            isReplay = true
+        }
+        delegateViewController?.controlview?(self, didSelectReplayButton: replayButton, isReplay: isReplay)
     }
 
     @IBAction func clickSuffleButton(_ sender: Any) {

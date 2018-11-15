@@ -6,7 +6,7 @@
 //  Copyright © 2018 LTT. All rights reserved.
 //
 
-import Foundation
+import AVFoundation
 import UIKit
 
 //MARK: ControlViewDelegate
@@ -28,8 +28,8 @@ extension ViewController: ControlViewDelegate{
         previousSong()
     }
 
-    func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton) {
-        print("Replay")
+    func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton, isReplay: Bool) {
+        self.isReplay = isReplay
     }
 
     func controlview(_ controlview: ControlView, didSelectShuffleButton: UIButton) {
@@ -67,5 +67,26 @@ extension ViewController:SongViewDelegate {
 
     func songview(_ songview: SongView, didSelectMoreButton: UIButton) {
         print("More")
+    }
+}
+
+//MARK: AVAudioDelegate
+extension ViewController: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if(listSong.indexOfConcurentSong == listSong.listSong.count - 1) {
+            if(isReplay) {
+                let song = listSong.listSong[0]
+                playSong(song: song)
+                delegateControlView?.viewcontroller?(self, songDidChanged: song)
+                delegateSongView?.viewcontroller?(self, songDidChanged: song)
+            }
+            listSong.indexOfConcurentSong = 0
+        } else {
+            listSong.indexOfConcurentSong += 1
+            let song = listSong.listSong[listSong.indexOfConcurentSong]
+            playSong(song: song)
+            delegateControlView?.viewcontroller?(self, songDidChanged: song)
+            delegateSongView?.viewcontroller?(self, songDidChanged: song)
+        }
     }
 }

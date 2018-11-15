@@ -14,6 +14,8 @@ struct Constants {
         static let stop = "326570-256 "
         static let play = "211876-128"
         static let slider = "icons8-record"
+        static let repeat1 = "icons8-repeat1"
+        static let repeat2 = "icons8-repeat"
     }
 
     struct Image {
