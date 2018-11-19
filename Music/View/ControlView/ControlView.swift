@@ -53,7 +53,6 @@ class ControlView: UIView, UITableViewDelegate{
         } else {
             playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
             delegate.controlview?(self, didSelectPauseButton: playButton)
-
         }
     }
 

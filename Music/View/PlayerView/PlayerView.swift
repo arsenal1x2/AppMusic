@@ -18,6 +18,7 @@ class PlayerView: UIView {
     @IBOutlet weak var totalTimeLbl: UILabel!
     @IBOutlet weak var slider: UISlider!
     weak var delegate:PlayerViewDelegate?
+    var isDragging: Bool = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,25 +43,24 @@ class PlayerView: UIView {
     private func setupSlider() {
         slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .normal)
         slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .highlighted)
-        let event = UIControlEvents.touchUpInside.rawValue | UIControlEvents.touchUpOutside.rawValue
-        slider.addTarget(self, action: #selector(printA), for: UIControlEvents(rawValue: event))
-        let event2 =  UIControlEvents.touchDragInside.rawValue | UIControlEvents.touchDragOutside.rawValue
-        slider.addTarget(self, action: #selector(printAB), for: UIControlEvents(rawValue: event2))
+        slider.addTarget(self, action: #selector(sliderChangedValue), for: .valueChanged)
+        let didChangedValue = UIControlEvents.touchUpInside.rawValue | UIControlEvents.touchUpOutside.rawValue
+        slider.addTarget(self, action: #selector(sliderDidEndEdit), for: UIControlEvents(rawValue: didChangedValue))
     }
 
-    @objc private func printAB() {
-        print("@@@@@@")
-        delegate?.sliderDidBeginChange()
+    @objc private func sliderChangedValue() {
+        isDragging = true
     }
 
 
-    @objc private func printA() {
-        print("BBBBB")
-        let value = slider.value
-        delegate?.sliderDidChanged(value: value, sender: self)
+    @objc private func sliderDidEndEdit() {
+        isDragging = false
+        delegate?.sliderDidChanged(value: slider.value, sender: self)
     }
 
     func updateFrame(with timeDuration: String, timeTotal: String, duration: Float) {
+
+        if isDragging { return }
          currentTimeLbl.text = timeDuration
          totalTimeLbl.text = timeTotal
          slider.value = duration

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 @objc protocol ViewControllerDelegate: class {
     @objc optional func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float)
@@ -27,8 +28,12 @@ class ViewController: UIViewController {
     weak var delegateControlView: ViewControllerDelegate?
     weak var delegateSongView: ViewControllerDelegate?
     weak var delegatePageView: ViewControllerDelegate?
+    var player: AVPlayer!
+    var playerItem: AVPlayerItem!
     let listSong:ListSong = ListSong()
     var isReplay = false
+    var duration:Float = 0
+    var currentTime:Float = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,7 @@ class ViewController: UIViewController {
     }
 
     func setupViews() {
+        setupAudioSession()
         controlView.delegateViewController = self
         self.delegatePlayerView = playerView
         playerView.delegate = self
@@ -43,12 +49,39 @@ class ViewController: UIViewController {
         songView.delegate = self
         self.delegateControlView = controlView
         self.delegateSongView = songView
-
-        audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: listSong.listSong[0].name, ofType: Constants.FileType.mp3)!))
-        audio.prepareToPlay()
-        playerView.slider.maximumValue = Float(audio.duration)
+        let path = Bundle.main.path(forResource: listSong.listSong[0].name, ofType:"mp3")!
+        let url = URL(fileURLWithPath: path)
+        playerItem = AVPlayerItem(url: url)
+        player = AVPlayer(playerItem: playerItem)
+        let duration : CMTime = playerItem.asset.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        playerView.slider.maximumValue = Float(seconds)
         songView.nameSongLbl.text = listSong.listSong[0].title
         songView.nameSingerLbl.text = listSong.listSong[0].singer
+    }
+
+    func setupRemoteCommandCenter() {
+        let commandCenter = MPRemoteCommandCenter.shared();
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget {event in
+            self.player.play()
+            return .success
+        }
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget {event in
+            self.player.pause()
+            return .success
+        }
+    }
+
+    func setupNowPlaying(song: Song) {
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = playerItem.currentTime().seconds
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = playerItem.asset.duration.seconds
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        MPNowPlayingInfoCenter.default().playbackState = .playing
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,11 +89,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting the AVAudioSession:", error.localizedDescription)
+        }
+    }
+
     @objc func updateTime() {
-        let totalTime = Int.convertToTimeString(time: audio.duration)
-        let duration = Float(audio.currentTime)
-        let durationTime = Int.convertToTimeString(time: audio.currentTime)
-        delegatePlayerView?.updatePlayerView?(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
+        let duration : CMTime = playerItem.asset.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        let totalTimeString = Int.convertToTimeString(time: TimeInterval(seconds))
+        let concurent: CMTime = playerItem.currentTime()
+        let secondsCurrent: Float64 = CMTimeGetSeconds(concurent)
+        let durationString = Float(secondsCurrent)
+        print(durationString)
+        let durationTimeString = Int.convertToTimeString(time: TimeInterval(secondsCurrent))
+        delegatePlayerView?.updatePlayerView?(timeDuration: durationTimeString, timeTotal: totalTimeString, duration: durationString)
     }
 
     func nextSong() {
@@ -84,28 +131,29 @@ class ViewController: UIViewController {
     }
 
     func resetUI() {
-        playerView.slider.maximumValue = Float(audio.duration)
-        let totalTime = Int.convertToTimeString(time: audio.duration)
-        let duration = Float(audio.currentTime)
-        let durationTime = "0:00"
-        delegatePlayerView?.updatePlayerView?(timeDuration: durationTime, timeTotal: totalTime, duration: duration)
-        
+
+        let duration : CMTime = playerItem.asset.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        playerView.slider.maximumValue = Float(seconds)
+        updateTime()
     }
     func play() {
-        audio.play()
+        player.play()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-
     }
 
     func playSong(song: Song) {
-        audio = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: song.name, ofType: Constants.FileType.mp3)!))
-        audio.prepareToPlay()
-        audio.delegate = self
+        let path = Bundle.main.path(forResource: song.name, ofType:"mp3")!
+        let url = URL(fileURLWithPath: path)
+        playerItem = AVPlayerItem(url: url)
+        player = AVPlayer(playerItem: playerItem)
+        setupNowPlaying(song: song)
+        setupRemoteCommandCenter()
         play()
     }
 
     func stop() {
-        audio.stop()
+        player.pause()
         timer.invalidate()
     }
 

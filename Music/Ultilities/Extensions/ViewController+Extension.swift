@@ -45,8 +45,14 @@ extension ViewController: PlayerViewDelegate {
 
 
     func sliderDidChanged(value: Float, sender: PlayerView) {
-        audio.currentTime = TimeInterval(value)
-        play()
+        let seconds : Int64 = Int64(value)
+        let targetTime:CMTime = CMTimeMake(seconds, 1)
+        player!.seek(to: targetTime)
+
+        if player!.rate == 0
+        {
+            player?.play()
+        }
     }
 }
 
@@ -100,10 +106,14 @@ extension ViewController: AVAudioPlayerDelegate {
 extension ViewController:PageViewControllerDelegate {
     func pageview(_ pageview: PageViewController, transitionCompleted: Bool, index: Int) {
        let song = listSong.listSong[index]
-       stop()
+        stop()
        resetUI()
        playSong(song: song)
        delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)
        delegateControlView?.viewcontroller?(self, songDidChanged: song, index: index)
     }
 }
+
+//Extension: AVPlayerDelegate
+
+
