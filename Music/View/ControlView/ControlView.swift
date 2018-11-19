@@ -57,8 +57,6 @@ class ControlView: UIView, UITableViewDelegate{
         }
     }
 
-
-
     @IBAction func clickReplayButton(_ sender: Any) {
         if isReplay {
            replayButton.setImage(UIImage(named: Constants.Icon.repeat2), for: .normal)
@@ -84,5 +82,13 @@ class ControlView: UIView, UITableViewDelegate{
         playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
         isPlaying = false
         delegateViewController?.controlview?(self, didSelectNextButton: nextButton)
+    }
+}
+
+//MARK: ViewController Delegate
+extension ControlView: ViewControllerDelegate {
+    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song,index :Int) {
+        isPlaying = true
+        playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
     }
 }

@@ -37,9 +37,7 @@ class CustomNavigationBar: UIView {
         delegate?.navigationbar(self, didSelectLeftButton: leftItemBtn)
     }
 
-
     @IBAction func clickRighBtn(_ sender: Any) {
         delegate?.navigationbar(self, didSelectRightButton: rightItemBtn)
     }
-
 }

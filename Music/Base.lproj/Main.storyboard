@@ -32,7 +32,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2V-fZ-Ukm">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="436.66666666666669"/>
                                                 <connections>
-                                                    <segue destination="vF6-fn-Xvz" kind="embed" id="h73-f7-kh4"/>
+                                                    <segue destination="vF6-fn-Xvz" kind="embed" identifier="pageVC" id="h73-f7-kh4"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>

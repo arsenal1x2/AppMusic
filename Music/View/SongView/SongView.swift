@@ -42,3 +42,11 @@ class SongView: UIView {
         loadNib()
     }
 }
+
+//MARK: ViewControllerDelegate
+extension SongView: ViewControllerDelegate {
+    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song,index: Int) {
+        nameSingerLbl.text = songDidChanged.singer
+        nameSongLbl.text = songDidChanged.title
+    }
+}

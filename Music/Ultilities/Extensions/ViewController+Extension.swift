@@ -39,9 +39,14 @@ extension ViewController: ControlViewDelegate{
 
 //MARK: PlayerViewDelegate
 extension ViewController: PlayerViewDelegate {
+    func sliderDidBeginChange() {
+        timer.invalidate()
+    }
+
 
     func sliderDidChanged(value: Float, sender: PlayerView) {
         audio.currentTime = TimeInterval(value)
+        play()
     }
 }
 
@@ -77,16 +82,27 @@ extension ViewController: AVAudioPlayerDelegate {
             if(isReplay) {
                 let song = listSong.listSong[0]
                 playSong(song: song)
-                delegateControlView?.viewcontroller?(self, songDidChanged: song)
-                delegateSongView?.viewcontroller?(self, songDidChanged: song)
+                delegateControlView?.viewcontroller?(self, songDidChanged: song, index: 0)
+                delegateSongView?.viewcontroller?(self, songDidChanged: song, index: 0)
             }
             listSong.indexOfConcurentSong = 0
         } else {
             listSong.indexOfConcurentSong += 1
             let song = listSong.listSong[listSong.indexOfConcurentSong]
             playSong(song: song)
-            delegateControlView?.viewcontroller?(self, songDidChanged: song)
-            delegateSongView?.viewcontroller?(self, songDidChanged: song)
+            delegateControlView?.viewcontroller?(self, songDidChanged: song, index: listSong.indexOfConcurentSong)
+            delegateSongView?.viewcontroller?(self, songDidChanged: song, index: listSong.indexOfConcurentSong)
         }
+    }
+}
+
+//MARK: PageViewController
+extension ViewController:PageViewControllerDelegate {
+    func pageview(_ pageview: PageViewController, transitionCompleted: Bool, index: Int) {
+       let song = listSong.listSong[index]
+       resetUI()
+       playSong(song: song)
+       delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)
+       delegateControlView?.viewcontroller?(self, songDidChanged: song, index: index)
     }
 }

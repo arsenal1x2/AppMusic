@@ -10,6 +10,7 @@ import UIKit
 
 protocol PlayerViewDelegate: class {
     func sliderDidChanged(value: Float, sender: PlayerView)
+    func sliderDidBeginChange()
 }
 
 class PlayerView: UIView {
@@ -17,10 +18,12 @@ class PlayerView: UIView {
     @IBOutlet weak var totalTimeLbl: UILabel!
     @IBOutlet weak var slider: UISlider!
     weak var delegate:PlayerViewDelegate?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -34,12 +37,20 @@ class PlayerView: UIView {
         loadNib()
         setupSlider()
     }
+
     private func setupSlider() {
         slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .normal)
         slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .highlighted)
         let event = UIControlEvents.touchUpInside.rawValue | UIControlEvents.touchUpOutside.rawValue
         slider.addTarget(self, action: #selector(printA), for: UIControlEvents(rawValue: event))
+        slider.addTarget(self, action: #selector(printAB), for: UIControlEvents.valueChanged)
     }
+
+    @objc private func printAB() {
+        delegate?.sliderDidBeginChange()
+    }
+
+
     @objc private func printA() {
         let value = slider.value
         delegate?.sliderDidChanged(value: value, sender: self)
@@ -49,6 +60,14 @@ class PlayerView: UIView {
          currentTimeLbl.text = timeDuration
          totalTimeLbl.text = timeTotal
          slider.value = duration
+    }
+}
+
+//MARK: ViewControllerDelegate
+extension PlayerView: ViewControllerDelegate {
+
+    func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float) {
+        updateFrame(with: timeDuration, timeTotal: timeTotal, duration: duration)
     }
 }
 
