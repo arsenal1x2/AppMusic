@@ -38,6 +38,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        do {
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+            print("bb> Receiving remote control events\n")
+        } catch {
+            print("bb> Audio Session error.\n")
+        }
+
     }
 
     func setupViews() {
@@ -91,7 +98,7 @@ class ViewController: UIViewController {
 
     func setupAudioSession() {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("Error setting the AVAudioSession:", error.localizedDescription)
