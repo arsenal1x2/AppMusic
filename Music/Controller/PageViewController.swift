@@ -29,6 +29,11 @@ class PageViewController: UIPageViewController {
         self.delegate = self
     }
 
+    @objc func pageControlDidChange() {
+        let index = pageControl.currentPage
+        changeTo(index: index)
+        self.pageViewDelegate?.pageview(self, transitionCompleted: true, index: index)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,6 +46,8 @@ class PageViewController: UIPageViewController {
             self.pageControl.tintColor = UIColor.black
             self.pageControl.pageIndicatorTintColor = UIColor.white
             self.pageControl.currentPageIndicatorTintColor = UIColor.black
+            self.pageControl.isEnabled = true
+            pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
             self.view.addSubview(pageControl)
     }
 
@@ -53,6 +60,7 @@ class PageViewController: UIPageViewController {
             arrayViewController.append(vc)
         }
     }
+
     func changeTo(index: Int) {
         let vc = arrayViewController[index]
         setViewControllers([vc], direction: .reverse, animated: true) { (_) in
@@ -78,9 +86,9 @@ extension PageViewController:UIPageViewControllerDataSource {
         guard let indexViewController = arrayViewController.index(of: viewController as! ImageViewController) else {
             return nil
         }
-        let nextIndex = indexViewController + 1
+        var nextIndex = indexViewController + 1
         if (nextIndex > arrayViewController.count) { return nil }
-        if (nextIndex == arrayViewController.count) { return arrayViewController.first }
+        if (nextIndex == arrayViewController.count) { nextIndex = 0 }
         return arrayViewController[nextIndex]
     }
 }

@@ -43,15 +43,18 @@ class PlayerView: UIView {
         slider.setThumbImage(UIImage(named: Constants.Icon.slider), for: .highlighted)
         let event = UIControlEvents.touchUpInside.rawValue | UIControlEvents.touchUpOutside.rawValue
         slider.addTarget(self, action: #selector(printA), for: UIControlEvents(rawValue: event))
-        slider.addTarget(self, action: #selector(printAB), for: UIControlEvents.valueChanged)
+        let event2 =  UIControlEvents.touchDragInside.rawValue | UIControlEvents.touchDragOutside.rawValue
+        slider.addTarget(self, action: #selector(printAB), for: UIControlEvents(rawValue: event2))
     }
 
     @objc private func printAB() {
+        print("@@@@@@")
         delegate?.sliderDidBeginChange()
     }
 
 
     @objc private func printA() {
+        print("BBBBB")
         let value = slider.value
         delegate?.sliderDidChanged(value: value, sender: self)
     }
