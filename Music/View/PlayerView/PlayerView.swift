@@ -31,6 +31,7 @@ class PlayerView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        commonInit()
     }
 
     private func commonInit() {

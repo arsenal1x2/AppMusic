@@ -100,6 +100,7 @@ extension ViewController: AVAudioPlayerDelegate {
 extension ViewController:PageViewControllerDelegate {
     func pageview(_ pageview: PageViewController, transitionCompleted: Bool, index: Int) {
        let song = listSong.listSong[index]
+       stop()
        resetUI()
        playSong(song: song)
        delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)

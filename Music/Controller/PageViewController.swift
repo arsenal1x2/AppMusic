@@ -101,6 +101,7 @@ extension PageViewController:UIPageViewControllerDelegate {
         self.pageControl.currentPage = arrayViewController.index(of: pageContentViewController as! ImageViewController)!
         self.pageViewDelegate?.pageview(self, transitionCompleted: true, index: pageControl.currentPage)
     }
+
 }
 extension PageViewController:ViewControllerDelegate {
 
