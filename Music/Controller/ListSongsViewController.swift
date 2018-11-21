@@ -39,16 +39,20 @@ class ListSongsViewController: UIViewController {
 //MARK: TableViewDelegate
 extension ListSongsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let cell: SongTableViewCell = tableView.cellForRow(at: indexPath) as! SongTableViewCell
-       cell.isSelected = true
+        guard let cell: SongTableViewCell = tableView.cellForRow(at: indexPath) as? SongTableViewCell else {
+            return
+        }
         guard let url = URL(string: photos[indexPath.row].avatar!) else {
             return
         }
+        cell.isSelected = true
        imgBackground.sd_setImage(with: url, completed: nil)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell: SongTableViewCell = tableView.cellForRow(at: indexPath) as! SongTableViewCell
+        guard let cell: SongTableViewCell = tableView.cellForRow(at: indexPath) as? SongTableViewCell else {
+            return
+        }
         cell.isSelected = false
     }
 }
