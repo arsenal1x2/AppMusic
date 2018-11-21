@@ -34,11 +34,7 @@ class PageViewController: UIPageViewController {
         changeTo(index: index)
         self.pageViewDelegate?.pageview(self, transitionCompleted: true, index: index)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func configurePageControl() {
             pageControl = UIPageControl(frame: CGRect(x: 0,y:self.view.frame.midY - 10,width: self.view.bounds.width,height: 50))
             self.pageControl.numberOfPages = viewcontroller.listSong.listSong.count
@@ -101,8 +97,9 @@ extension PageViewController:UIPageViewControllerDelegate {
         self.pageControl.currentPage = arrayViewController.index(of: pageContentViewController as! ImageViewController)!
         self.pageViewDelegate?.pageview(self, transitionCompleted: true, index: pageControl.currentPage)
     }
-
 }
+
+//MARK: ViewControllerDelegate
 extension PageViewController:ViewControllerDelegate {
 
     func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song, index: Int) {

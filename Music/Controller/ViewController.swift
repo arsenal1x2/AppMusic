@@ -44,7 +44,6 @@ class ViewController: UIViewController {
         } catch {
             print("bb> Audio Session error.\n")
         }
-
     }
 
     func setupViews() {
@@ -89,11 +88,6 @@ class ViewController: UIViewController {
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
         MPNowPlayingInfoCenter.default().playbackState = .playing
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func setupAudioSession() {
@@ -144,6 +138,7 @@ class ViewController: UIViewController {
         playerView.slider.maximumValue = Float(seconds)
         updateTime()
     }
+
     func play() {
         player.play()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
