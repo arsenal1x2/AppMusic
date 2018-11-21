@@ -14,7 +14,7 @@ protocol PageViewControllerDelegate: class {
 
 class PageViewController: UIPageViewController {
     private(set) lazy var arrayViewController: [ImageViewController] = [ImageViewController]()
-    var viewcontroller:ViewController = ViewController()
+    var tracks: Tracks!
     private(set) lazy var pageControl = UIPageControl()
     weak var pageViewDelegate: PageViewControllerDelegate?
      
@@ -22,9 +22,9 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
         loadData()
         dataSource = self
-        if let firstViewController =  arrayViewController.first {
-            setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
-        }
+        let firstViewController =  arrayViewController[tracks.currentIndexOfTrack]
+        setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
+
         configurePageControl()
         self.delegate = self
     }
@@ -37,8 +37,8 @@ class PageViewController: UIPageViewController {
 
     func configurePageControl() {
             pageControl = UIPageControl(frame: CGRect(x: 0,y:self.view.frame.midY - 10,width: self.view.bounds.width,height: 50))
-            self.pageControl.numberOfPages = viewcontroller.listSong.listSong.count
-            self.pageControl.currentPage = 0
+            self.pageControl.numberOfPages = tracks.tracks.count
+            self.pageControl.currentPage = tracks.currentIndexOfTrack
             self.pageControl.tintColor = UIColor.black
             self.pageControl.pageIndicatorTintColor = UIColor.white
             self.pageControl.currentPageIndicatorTintColor = UIColor.black
@@ -48,11 +48,12 @@ class PageViewController: UIPageViewController {
     }
 
     func loadData() {
-        for index in 0...viewcontroller.listSong.listSong.count - 1 {
+        for index in 0...tracks.tracks.count - 1 {
             let storyboard = UIStoryboard.init(storyboard: .main)
             let vc:ImageViewController = storyboard.instantiateViewController()
             vc.loadView()
-            vc.loadImage(image: viewcontroller.listSong.listSong[index].image)
+            let urlImgTrack = tracks.tracks[index].avatar
+            vc.loadImage(urlString: urlImgTrack!)
             arrayViewController.append(vc)
         }
     }
@@ -96,14 +97,19 @@ extension PageViewController:UIPageViewControllerDelegate {
         let pageContentViewController = pageViewController.viewControllers![0]
         self.pageControl.currentPage = arrayViewController.index(of: pageContentViewController as! ImageViewController)!
         self.pageViewDelegate?.pageview(self, transitionCompleted: true, index: pageControl.currentPage)
+
     }
 }
 
 //MARK: ViewControllerDelegate
 extension PageViewController:ViewControllerDelegate {
 
-    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song, index: Int) {
+    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track, index: Int) {
        changeTo(index: index)
+    }
+
+    func viewcontroller(didLoad tracks: Tracks) {
+            self.tracks = tracks
     }
 }
 

@@ -29,4 +29,8 @@ struct Constants {
     }
 
     static let NameSong = "Chi-Yeu-Minh-Em-Chau-Khai-Phong"
+
+    struct API {
+        static let base = ""
+    }
 }

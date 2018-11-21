@@ -12,12 +12,13 @@ import MediaPlayer
 
 @objc protocol ViewControllerDelegate: class {
     @objc optional func updatePlayerView(timeDuration: String, timeTotal: String, duration: Float)
-    @objc optional func viewcontroller(_ viewcontroller: ViewController, isCompleted: Bool)
-    @objc optional func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song, index: Int)
-    @objc optional func viewcontroller(_ viewcontroller: ViewController, didStopSong: Song)
+    @objc optional func viewcontroller(_ viewcontroller: PlayViewController, isCompleted: Bool)
+    @objc optional func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track, index: Int)
+    @objc optional func viewcontroller(_ viewcontroller: PlayViewController, didStopSong: Track)
+    @objc optional func viewcontroller(didLoad tracks: Tracks)
 }
 
-class ViewController: UIViewController {
+class PlayViewController: UIViewController {
     @IBOutlet weak var songView: SongView!
     @IBOutlet weak var navigationbar: CustomNavigationBar!
     @IBOutlet weak var playerView: PlayerView!
@@ -30,10 +31,11 @@ class ViewController: UIViewController {
     weak var delegatePageView: ViewControllerDelegate?
     var player: AVPlayer!
     var playerItem: AVPlayerItem!
-    let listSong:ListSong = ListSong()
+    var listTrack:Tracks! = nil
     var isReplay = false
     var duration:Float = 0
     var currentTime:Float = 0
+    var indexPlay: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +57,14 @@ class ViewController: UIViewController {
         songView.delegate = self
         self.delegateControlView = controlView
         self.delegateSongView = songView
-        let path = Bundle.main.path(forResource: listSong.listSong[0].name, ofType:"mp3")!
-        let url = URL(fileURLWithPath: path)
-        playerItem = AVPlayerItem(url: url)
+        let url = URL(string: listTrack.tracks[indexPlay].url!)
+        playerItem = AVPlayerItem(url: url!)
         player = AVPlayer(playerItem: playerItem)
         let duration : CMTime = playerItem.asset.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
         playerView.slider.maximumValue = Float(seconds)
-        songView.nameSongLbl.text = listSong.listSong[0].title
-        songView.nameSingerLbl.text = listSong.listSong[0].singer
+        songView.nameSongLbl.text = listTrack.tracks[indexPlay].name
+        songView.nameSingerLbl.text = listTrack.tracks[indexPlay].singer
     }
 
     func setupRemoteCommandCenter() {
@@ -80,9 +81,9 @@ class ViewController: UIViewController {
         }
     }
 
-    func setupNowPlaying(song: Song) {
+    func setupNowPlaying(song: Track) {
         var nowPlayingInfo = [String : Any]()
-        nowPlayingInfo[MPMediaItemPropertyTitle] = song.title
+        nowPlayingInfo[MPMediaItemPropertyTitle] = song.name
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = playerItem.currentTime().seconds
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = playerItem.asset.duration.seconds
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
@@ -112,19 +113,19 @@ class ViewController: UIViewController {
     }
 
     func nextSong() {
-        let song = listSong.Next()
+        let song = listTrack.next()
         changeTo(song: song)
     }
 
     func previousSong() {
-        let song = listSong.Previous()
+        let song = listTrack.previous()
         changeTo(song: song)
     }
 
-    func changeTo(song: Song) {
+    func changeTo(song: Track) {
         stop()
         resetUI()
-        let index = listSong.indexOfConcurentSong
+        let index = listTrack.currentIndexOfTrack
         playSong(song: song)
         delegateControlView?.viewcontroller?(self, songDidChanged: song, index: index)
         delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)
@@ -132,7 +133,6 @@ class ViewController: UIViewController {
     }
 
     func resetUI() {
-
         let duration : CMTime = playerItem.asset.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
         playerView.slider.maximumValue = Float(seconds)
@@ -144,9 +144,9 @@ class ViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
 
-    func playSong(song: Song) {
-        let path = Bundle.main.path(forResource: song.name, ofType:"mp3")!
-        let url = URL(fileURLWithPath: path)
+    func playSong(song: Track) {
+        guard let urlString = song.url else { return }
+        guard let url = URL(string: urlString) else { return }
         playerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
         setupNowPlaying(song: song)
@@ -163,6 +163,7 @@ class ViewController: UIViewController {
         guard let viewcontroller = segue.destination as? PageViewController else { return }
         viewcontroller.pageViewDelegate = self
         self.delegatePageView = viewcontroller
+        delegatePageView?.viewcontroller!(didLoad: listTrack)
     }
 }
 

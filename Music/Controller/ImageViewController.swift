@@ -15,7 +15,8 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    func loadImage(image: UIImage) {
-        pictureImg.image = image
+    func loadImage(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        pictureImg.sd_setImage(with: url, completed: nil)
     }
 }

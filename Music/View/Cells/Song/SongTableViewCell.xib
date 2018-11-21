@@ -7,13 +7,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="SongTableViewCell" customModule="Music" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SongTableViewCell" id="KGk-i7-Jjw" customClass="SongTableViewCell" customModule="Music" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -23,44 +24,79 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MFp-Hy-WC1">
                         <rect key="frame" x="0.0" y="0.5" width="320" height="54"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sontung" translatesAutoresizingMaskIntoConstraints="NO" id="fMv-b1-H37">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbO-Fz-N5P">
                                 <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="fMv-b1-H37" secondAttribute="height" multiplier="1:1" id="GXU-sn-MXK"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Wy7-MD-eXP">
-                                <rect key="frame" x="64" y="0.0" width="256" height="54"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cơn mưa ngang qua" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGB-rf-6el">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="30.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eon-4H-iNe">
+                                        <rect key="frame" x="0.0" y="5" width="44.5" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="eon-4H-iNe" secondAttribute="height" multiplier="1:1" id="dRM-Ec-MP7"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hbO-Fz-N5P" secondAttribute="height" multiplier="1:1" id="CVN-EG-FZT"/>
+                                    <constraint firstItem="eon-4H-iNe" firstAttribute="height" secondItem="hbO-Fz-N5P" secondAttribute="height" multiplier="45:55" id="DjN-Y7-q4s"/>
+                                    <constraint firstItem="eon-4H-iNe" firstAttribute="leading" secondItem="hbO-Fz-N5P" secondAttribute="leading" id="KCT-mf-EIt"/>
+                                    <constraint firstItem="eon-4H-iNe" firstAttribute="centerY" secondItem="hbO-Fz-N5P" secondAttribute="centerY" id="j4s-3m-s2C"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="7Ay-aL-6Qm">
+                                <rect key="frame" x="64" y="0.0" width="221" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameSong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xav-VR-7EW">
+                                        <rect key="frame" x="0.0" y="0.0" width="221" height="28.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sơn tùng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8U1-zb-nXB">
-                                        <rect key="frame" x="0.0" y="30.5" width="256" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name Singer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRH-W9-ESY">
+                                        <rect key="frame" x="0.0" y="28.5" width="221" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vGB-rf-6el" secondAttribute="trailing" id="2AH-AV-faY"/>
-                                    <constraint firstItem="vGB-rf-6el" firstAttribute="top" secondItem="Wy7-MD-eXP" secondAttribute="top" id="3dO-ID-in0"/>
-                                    <constraint firstAttribute="bottom" secondItem="8U1-zb-nXB" secondAttribute="bottom" id="5zP-4r-Xyu"/>
-                                    <constraint firstItem="8U1-zb-nXB" firstAttribute="top" secondItem="vGB-rf-6el" secondAttribute="bottom" id="D3g-Xt-OQE"/>
-                                    <constraint firstItem="8U1-zb-nXB" firstAttribute="top" secondItem="vGB-rf-6el" secondAttribute="bottom" id="DfW-aw-2A9"/>
-                                    <constraint firstAttribute="trailing" secondItem="8U1-zb-nXB" secondAttribute="trailing" id="aLC-xl-znY"/>
-                                    <constraint firstItem="8U1-zb-nXB" firstAttribute="leading" secondItem="Wy7-MD-eXP" secondAttribute="leading" id="fjn-C5-R55"/>
-                                    <constraint firstItem="vGB-rf-6el" firstAttribute="leading" secondItem="Wy7-MD-eXP" secondAttribute="leading" id="uWX-fr-psQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="xav-VR-7EW" secondAttribute="trailing" id="Alh-fv-nq3"/>
+                                    <constraint firstItem="dRH-W9-ESY" firstAttribute="top" secondItem="xav-VR-7EW" secondAttribute="bottom" id="Nwp-HC-3Eu"/>
+                                    <constraint firstItem="dRH-W9-ESY" firstAttribute="top" secondItem="xav-VR-7EW" secondAttribute="bottom" id="eG1-kZ-H6E"/>
+                                    <constraint firstItem="xav-VR-7EW" firstAttribute="leading" secondItem="7Ay-aL-6Qm" secondAttribute="leading" id="gbL-ln-e1k"/>
+                                    <constraint firstAttribute="bottom" secondItem="dRH-W9-ESY" secondAttribute="bottom" id="kph-vN-PX4"/>
+                                    <constraint firstAttribute="trailing" secondItem="dRH-W9-ESY" secondAttribute="trailing" id="lHt-TH-uy4"/>
+                                    <constraint firstItem="dRH-W9-ESY" firstAttribute="leading" secondItem="7Ay-aL-6Qm" secondAttribute="leading" id="oSo-rO-sMW"/>
+                                    <constraint firstItem="xav-VR-7EW" firstAttribute="top" secondItem="7Ay-aL-6Qm" secondAttribute="top" id="w3b-tW-vtv"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE0-Yu-ggy">
+                                <rect key="frame" x="295" y="0.0" width="25" height="54"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHJ-Jf-yxV">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="54"/>
+                                        <state key="normal" image="icons8-play-button-circled "/>
+                                        <connections>
+                                            <action selector="clickPlayButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bAv-tQ-IjN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mHJ-Jf-yxV" firstAttribute="top" secondItem="EE0-Yu-ggy" secondAttribute="top" id="51f-qJ-bux"/>
+                                    <constraint firstAttribute="bottom" secondItem="mHJ-Jf-yxV" secondAttribute="bottom" id="JaM-Fg-kCU"/>
+                                    <constraint firstAttribute="trailing" secondItem="mHJ-Jf-yxV" secondAttribute="trailing" id="QN9-9u-fVw"/>
+                                    <constraint firstItem="mHJ-Jf-yxV" firstAttribute="leading" secondItem="EE0-Yu-ggy" secondAttribute="leading" id="Rxr-Uz-FlC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="fMv-b1-H37" secondAttribute="bottom" id="7JK-mk-6MW"/>
-                            <constraint firstItem="fMv-b1-H37" firstAttribute="leading" secondItem="MFp-Hy-WC1" secondAttribute="leading" id="8Xf-vF-kCe"/>
-                            <constraint firstItem="fMv-b1-H37" firstAttribute="top" secondItem="MFp-Hy-WC1" secondAttribute="top" id="cQE-us-kdO"/>
+                            <constraint firstItem="EE0-Yu-ggy" firstAttribute="width" secondItem="MFp-Hy-WC1" secondAttribute="width" multiplier="25:320" id="5mC-dQ-0Iq"/>
+                            <constraint firstAttribute="bottom" secondItem="EE0-Yu-ggy" secondAttribute="bottom" id="5o4-jQ-ZUp"/>
+                            <constraint firstItem="hbO-Fz-N5P" firstAttribute="top" secondItem="MFp-Hy-WC1" secondAttribute="top" id="T0V-p2-s8G"/>
+                            <constraint firstItem="hbO-Fz-N5P" firstAttribute="leading" secondItem="MFp-Hy-WC1" secondAttribute="leading" id="WMM-JO-j9J"/>
+                            <constraint firstAttribute="bottom" secondItem="hbO-Fz-N5P" secondAttribute="bottom" id="qN4-Bf-CDC"/>
+                            <constraint firstAttribute="trailing" secondItem="EE0-Yu-ggy" secondAttribute="trailing" id="rC6-M0-GdA"/>
+                            <constraint firstItem="EE0-Yu-ggy" firstAttribute="top" secondItem="MFp-Hy-WC1" secondAttribute="top" id="yJk-74-TKd"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -74,14 +110,17 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageSong" destination="fMv-b1-H37" id="1hl-3I-WOk"/>
-                <outlet property="nameSinger" destination="8U1-zb-nXB" id="DWJ-4X-zua"/>
-                <outlet property="nameSong" destination="vGB-rf-6el" id="K1x-fx-8b7"/>
+                <outlet property="imageSong" destination="eon-4H-iNe" id="ywl-CF-bWM"/>
+                <outlet property="nameSinger" destination="dRH-W9-ESY" id="d1b-1Z-bzm"/>
+                <outlet property="nameSong" destination="xav-VR-7EW" id="cBn-Nj-2du"/>
+                <outlet property="playButton" destination="mHJ-Jf-yxV" id="SAE-Z9-Afe"/>
+                <outlet property="viewAvatar" destination="hbO-Fz-N5P" id="r6h-Td-fQ2"/>
+                <outlet property="viewButton" destination="EE0-Yu-ggy" id="J2O-nT-hJp"/>
             </connections>
             <point key="canvasLocation" x="26" y="51.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="sontung" width="80" height="80"/>
+        <image name="icons8-play-button-circled " width="25" height="25"/>
     </resources>
 </document>

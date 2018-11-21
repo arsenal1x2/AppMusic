@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 //MARK: ControlViewDelegate
-extension ViewController: ControlViewDelegate{
+extension PlayViewController: ControlViewDelegate{
 
     func controlview(_ controlview: ControlView, didSelectPlayButton: UIButton) {
         play()
@@ -38,8 +38,7 @@ extension ViewController: ControlViewDelegate{
 }
 
 //MARK: PlayerViewDelegate
-extension ViewController: PlayerViewDelegate {
-
+extension PlayViewController: PlayerViewDelegate {
     func sliderDidBeginChange() {
         timer.invalidate()
     }
@@ -55,19 +54,19 @@ extension ViewController: PlayerViewDelegate {
 }
 
 //MARK:CustombarNavigationDelegate
-extension ViewController:CustomNavigationBarDelegate {
+extension PlayViewController: CustomNavigationBarDelegate {
 
     func navigationbar(_ navigationbar: CustomNavigationBar, didSelectLeftButton: UIButton) {
         print("clicked left Item")
     }
 
     func navigationbar(_ navigationbar: CustomNavigationBar, didSelectRightButton: UIButton) {
-        print("clicked right item")
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
 //MARK: SongViewDelegate
-extension ViewController:SongViewDelegate {
+extension PlayViewController: SongViewDelegate {
 
     func songview(_ songview: SongView, didSelectAddButton: UIButton) {
         print("Add Song")
@@ -79,38 +78,46 @@ extension ViewController:SongViewDelegate {
 }
 
 //MARK: AVAudioDelegate
-extension ViewController: AVAudioPlayerDelegate {
+extension PlayViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if(listSong.indexOfConcurentSong == listSong.listSong.count - 1) {
+        if(listTrack.currentIndexOfTrack == listTrack.tracks.count - 1) {
             if(isReplay) {
-                let song = listSong.listSong[0]
+                let song = listTrack.tracks[0]
                 playSong(song: song)
                 delegateControlView?.viewcontroller?(self, songDidChanged: song, index: 0)
                 delegateSongView?.viewcontroller?(self, songDidChanged: song, index: 0)
             }
-            listSong.indexOfConcurentSong = 0
+            listTrack.currentIndexOfTrack = 0
         } else {
-            listSong.indexOfConcurentSong += 1
-            let song = listSong.listSong[listSong.indexOfConcurentSong]
+            listTrack.currentIndexOfTrack += 1
+            let song = listTrack.tracks[listTrack.currentIndexOfTrack]
             playSong(song: song)
-            delegateControlView?.viewcontroller?(self, songDidChanged: song, index: listSong.indexOfConcurentSong)
-            delegateSongView?.viewcontroller?(self, songDidChanged: song, index: listSong.indexOfConcurentSong)
+            delegateControlView?.viewcontroller?(self, songDidChanged: song, index: listTrack.currentIndexOfTrack)
+            delegateSongView?.viewcontroller?(self, songDidChanged: song, index: listTrack.currentIndexOfTrack)
         }
     }
 }
 
 //MARK: PageViewController
-extension ViewController:PageViewControllerDelegate {
+extension PlayViewController: PageViewControllerDelegate {
     func pageview(_ pageview: PageViewController, transitionCompleted: Bool, index: Int) {
-       let song = listSong.listSong[index]
+        let song = listTrack.tracks[index]
+        listTrack.currentIndexOfTrack = index
         stop()
-       resetUI()
-       playSong(song: song)
-       delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)
-       delegateControlView?.viewcontroller?(self, songDidChanged: song, index: index)
+        resetUI()
+        playSong(song: song)
+        delegateSongView?.viewcontroller?(self, songDidChanged: song, index: index)
+        delegateControlView?.viewcontroller?(self, songDidChanged: song, index: index)
     }
 }
 
+//MARK: ListSongViewController
+extension PlayViewController: ListSongViewControllerDelegate {
+    func listSongViewController(tracks: Tracks, index: Int) {
+        self.listTrack = tracks
+        self.indexPlay = index
+    }
+}
 
 
 

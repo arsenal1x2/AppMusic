@@ -86,7 +86,7 @@ class ControlView: UIView, UITableViewDelegate{
 
 //MARK: ViewController Delegate
 extension ControlView: ViewControllerDelegate {
-    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song,index :Int) {
+    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track,index :Int) {
         isPlaying = true
         playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
     }

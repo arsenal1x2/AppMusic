@@ -10,13 +10,18 @@ import UIKit
 
 
 class SongTableViewCell: UITableViewCell {
-    @IBOutlet weak var nameSinger: UILabel!
-    @IBOutlet weak var nameSong: UILabel!
     @IBOutlet weak var imageSong: UIImageView!
+    @IBOutlet weak var nameSong: UILabel!
+    @IBOutlet weak var viewButton: UIView!
+    weak var delegate: SongTableViewCellDelegate?
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var viewAvatar: UIView!
+    @IBOutlet weak var nameSinger: UILabel!
     override var isSelected: Bool {
         didSet {
                 let hidden = self.isSelected ? false : true
-                setView(view: imageSong, hidden: hidden)
+                setView(view: viewAvatar, hidden: hidden)
+                setView(view: viewButton, hidden: hidden)
                 let color = UIColor(hexString: "#A901DB")
                 self.nameSong.textColor = self.isSelected ? color : UIColor.black
                 self.nameSinger.textColor = self.isSelected ? color : UIColor.black
@@ -31,6 +36,21 @@ class SongTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewAvatar.isHidden = true
+        viewButton.isHidden = true
+        self.nameSong.textColor =  UIColor.black
+        self.nameSinger.textColor =  UIColor.black
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //isSelected = false
+        self.nameSong.textColor =  UIColor.black
+        self.nameSinger.textColor =  UIColor.black
+    }
+
+    @IBAction func clickPlayButton(_ sender: Any) {
+        delegate?.songTableViewCellDidClickPlayButton()
     }
 
     func configCell(with track: Track) {
@@ -42,4 +62,8 @@ class SongTableViewCell: UITableViewCell {
         guard let url = URL(string: avatar) else { return }
         imageSong.sd_setImage(with: url, completed: nil)
     }
+}
+
+protocol SongTableViewCellDelegate: class {
+    func songTableViewCellDidClickPlayButton()
 }

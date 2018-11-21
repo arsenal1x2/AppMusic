@@ -45,8 +45,8 @@ class SongView: UIView {
 
 //MARK: ViewControllerDelegate
 extension SongView: ViewControllerDelegate {
-    func viewcontroller(_ viewcontroller: ViewController, songDidChanged: Song,index: Int) {
+    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track, index: Int) {
         nameSingerLbl.text = songDidChanged.singer
-        nameSongLbl.text = songDidChanged.title
+        nameSongLbl.text = songDidChanged.name
     }
 }

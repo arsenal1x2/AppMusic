@@ -13,7 +13,7 @@ struct DataService {
     static let shared = DataService()
     private var trackUrl = "https://music-api-kp.herokuapp.com/ranks/songs/nhac-viet"
 
-    func fetchTrack( complete: @escaping ( _ success: Bool, _ photos: [Track]?, _ error: Error? )->() ) {
+    func fetchTrack( complete: @escaping ( _ success: Bool, _ tracks: Tracks?, _ error: Error? )->() ) {
         Alamofire.request(trackUrl).responseJSON { (response) in
             if let error = response.error {
                 complete(false,nil, error)
@@ -29,7 +29,8 @@ struct DataService {
                         }
                     }
                 }
-                complete(true,tracks, nil)
+                let tracksObj: Tracks = Tracks.init(tracks: tracks)
+                complete(true,tracksObj, nil)
                 return
             }
         }

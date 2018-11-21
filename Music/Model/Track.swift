@@ -8,10 +8,8 @@
 
 import Foundation
 import Alamofire
-struct Tracks {
-    let tracks: [Track]
-}
-struct Track {
+
+class Track: NSObject {
     let avatar: String?
     let id: String?
     let lyric: String?
