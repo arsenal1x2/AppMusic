@@ -47,10 +47,12 @@ class AudioPlayer {
 
     func play() {
         player.play()
+        isPlaying = true
     }
 
     func pause() {
         player.pause()
+        isPlaying = false
     }
 
     func getCurrentTime() -> Float {
@@ -68,7 +70,7 @@ class AudioPlayer {
     }
 
     func sld_Duration(_ value: Float) {
-        let timeToSeek = value * duration
+        let timeToSeek = value
         let time = CMTimeMake(Int64(timeToSeek), 1)
         player.seek(to: time)
     }

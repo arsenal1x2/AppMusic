@@ -41,6 +41,11 @@ class PlayViewController: UIViewController {
     }
 
     func setupViews() {
+        if UIApplication.shared.responds(to: #selector(UIApplication.beginReceivingRemoteControlEvents)){
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+            UIApplication.shared.beginBackgroundTask(expirationHandler: { () -> Void in
+            })
+        }
         setupDelegate()
         setupPlayer()
     }
@@ -51,6 +56,7 @@ class PlayViewController: UIViewController {
         delegateControlView?.viewcontroller?(self, songDidChanged: track, index: indexPlay, isPlaying: isPlaying)
         delegateSongView?.viewcontroller?(self, songDidChanged: track, index: indexPlay, isPlaying: isPlaying)
         delegatePageView?.viewcontroller?(self, songDidChanged: track, index: indexPlay, isPlaying: isPlaying)
+        resetUI()
         if isPlaying {
             play()
             delegateControlView?.viewcontroller?(self, songDidChanged: track, index: indexPlay, isPlaying: isPlaying)
