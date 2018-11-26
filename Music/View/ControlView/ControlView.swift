@@ -11,8 +11,7 @@ import UIKit
 @objc protocol ControlViewDelegate: class {
     @objc optional func controlview(_ controlview: ControlView, didSelectNextButton: UIButton)
     @objc optional func controlview(_ controlview: ControlView, didSelectBackButton: UIButton)
-    @objc optional func controlview(_ controlview: ControlView, didSelectPlayButton: UIButton)
-    @objc optional func controlview(_ controlview: ControlView, didSelectPauseButton: UIButton)
+    @objc optional func controlview(_ controlview: ControlView, didSelectPlayAndPauseButton: UIButton, isPlaying: Bool)
     @objc optional func controlview(_ controlview: ControlView, didSelectReplayButton: UIButton, isReplay: Bool)
     @objc optional func controlview(_ controlview: ControlView, didSelectShuffleButton: UIButton)
 }
@@ -38,21 +37,24 @@ class ControlView: UIView, UITableViewDelegate{
 
     private func commonInit() {
         loadNib()
+        if isPlaying {
+            playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
+        } else {
+            playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
+        }
     }
 
     @IBAction func clickPlayButton(_ sender: Any) {
         handle(isPlaying: isPlaying)
+        delegateViewController?.controlview?(self, didSelectPlayAndPauseButton: playButton, isPlaying: isPlaying)
         isPlaying = !isPlaying
     }
 
     func handle(isPlaying: Bool) {
-        guard let delegate = delegateViewController else { return }
         if !isPlaying {
             playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
-            delegate.controlview?(self, didSelectPlayButton: playButton)
         } else {
             playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
-            delegate.controlview?(self, didSelectPauseButton: playButton)
         }
     }
 
@@ -72,22 +74,17 @@ class ControlView: UIView, UITableViewDelegate{
     }
 
     @IBAction func clickbackButton(_ sender: Any) {
-        playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
-        isPlaying = false
         delegateViewController?.controlview?(self, didSelectBackButton: backButton)
     }
 
     @IBAction func clickNextButton(_ sender: Any) {
-        playButton.setImage(UIImage(named: Constants.Icon.play), for: .normal)
-        isPlaying = false
         delegateViewController?.controlview?(self, didSelectNextButton: nextButton)
     }
 }
 
 //MARK: ViewController Delegate
 extension ControlView: ViewControllerDelegate {
-    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track,index :Int) {
-        isPlaying = true
-        playButton.setImage(UIImage(named: Constants.Icon.stop), for: .normal)
+    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track,index :Int, isPlaying: Bool) {
+        self.isPlaying = isPlaying
     }
 }

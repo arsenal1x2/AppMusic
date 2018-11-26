@@ -9,13 +9,13 @@
 import Foundation
 import Alamofire
 
-class Track: NSObject {
-    let avatar: String?
-    let id: String?
-    let lyric: String?
-    let name: String?
-    let singer: String?
-    let url: String?
+class Track: NSObject, Codable {
+    let avatar: String
+    let id: String
+    let lyric: String
+    let name: String
+    let singer: String
+    let url: String
 
     init? (data: [String: AnyObject]) {
         guard  let avatar = data["avatar"] as? String else { return nil }
@@ -31,7 +31,16 @@ class Track: NSObject {
         self.singer = singer
         self.url = url
     }
+
+    static func ==(lhs: Track, rhs: Track) -> Bool {
+        return lhs.name == rhs.name
+    }
+
+    static func <(lhs: Track, rhs: Track) -> Bool {
+        return lhs.name < rhs.name
+    }
 }
 
-//MARK: Convenience intilizers
+
+
 

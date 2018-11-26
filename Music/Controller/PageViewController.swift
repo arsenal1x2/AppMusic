@@ -24,7 +24,6 @@ class PageViewController: UIPageViewController {
         dataSource = self
         let firstViewController =  arrayViewController[tracks.currentIndexOfTrack]
         setViewControllers([firstViewController], direction: .reverse, animated: true, completion:nil)
-
         configurePageControl()
         self.delegate = self
     }
@@ -53,7 +52,7 @@ class PageViewController: UIPageViewController {
             let vc:ImageViewController = storyboard.instantiateViewController()
             vc.loadView()
             let urlImgTrack = tracks.tracks[index].avatar
-            vc.loadImage(urlString: urlImgTrack!)
+            vc.loadImage(urlString: urlImgTrack)
             arrayViewController.append(vc)
         }
     }
@@ -104,7 +103,7 @@ extension PageViewController:UIPageViewControllerDelegate {
 //MARK: ViewControllerDelegate
 extension PageViewController:ViewControllerDelegate {
 
-    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track, index: Int) {
+    func viewcontroller(_ viewcontroller: PlayViewController, songDidChanged: Track, index: Int, isPlaying: Bool) {
        changeTo(index: index)
     }
 

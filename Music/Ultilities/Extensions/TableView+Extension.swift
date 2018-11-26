@@ -42,7 +42,6 @@ extension UITableView {
         let bundle = Bundle(for: T.self)
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         register(nib, forCellReuseIdentifier: T.reuseIdentifier)
-       // registerNib(nib, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
     }
 
     public func register<T: UITableViewHeaderFooterView>(aClass: T.Type) {

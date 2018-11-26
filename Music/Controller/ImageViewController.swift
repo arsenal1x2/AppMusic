@@ -16,7 +16,6 @@ class ImageViewController: UIViewController {
     }
 
     func loadImage(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
-        pictureImg.sd_setImage(with: url, completed: nil)
+        pictureImg.cacheImage(urlString: urlString)
     }
 }

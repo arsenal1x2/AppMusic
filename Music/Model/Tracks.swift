@@ -13,7 +13,7 @@ class Tracks: NSObject {
     var currentIndexOfTrack: Int = 0
 
     init(tracks:[Track]) {
-        self.tracks = tracks
+        self.tracks = tracks.sorted(by: { $0 < $1 })
     }
 
     func next() -> Track {

@@ -8,52 +8,62 @@
 
 import Foundation
 import AVFoundation
+import MediaPlayer
 
 class AudioPlayer {
-    static let  sharedInstance = AudioPlayer()
-    var pathString = ""
-    var isPlaying = false
-    var duration = Float()
-    var currentTime = Float()
-    var titleSong = ""
-    var player = AVPlayer()
-    var isRepeating =  false
-
-    private init() {
-
-    }
+    static let sharedInstance = AudioPlayer()
+    var player: AVPlayer!
+    var isReplay: Bool = false
+    var playerItem: AVPlayerItem!
+    var isPlaying: Bool = false
+    var duration: Float!
+    var path:  String = ""
+    var currentTime: Float!
 
     func setupAudio() {
-        var url:URL
-        if let checkingUrl = URL(string: pathString) {
-            url = checkingUrl
-        } else {
-            url = URL(fileURLWithPath: pathString)
-        }
-        let playerItem = AVPlayerItem(url:url)
+        guard let url = URL(string: path) else { return }
+        playerItem = AVPlayerItem(url:url)
         player = AVPlayer(playerItem:playerItem)
-        player.rate = 1.0;
         player.volume = 0.5
-        player.play()
-        isPlaying = true
-        isRepeating = true
+        let timeDuration = CMTimeGetSeconds(playerItem.asset.duration)
+        duration = Float(timeDuration)
+        setupAudioSession()
+        setupRemoteCommandCenter()
     }
 
-    func Repeat(_ repeatSong: Bool) {
-        if repeatSong == true {
-            isRepeating = true
-        } else {
-            isRepeating = false
+    func setupRemoteCommandCenter() {
+        let commandCenter = MPRemoteCommandCenter.shared();
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget {event in
+            self.player.play()
+            return .success
+        }
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget {event in
+            self.player.pause()
+            return .success
         }
     }
 
-    func action_PlayPause() {
-        if isPlaying == false {
-            player.play()
-            isPlaying = true
-        } else {
-            player.pause()
-            isPlaying = false
+    func play() {
+        player.play()
+    }
+
+    func pause() {
+        player.pause()
+    }
+
+    func getCurrentTime() -> Float {
+        let currentTime = player.currentTime()
+        return Float(CMTimeGetSeconds(currentTime))
+    }
+
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting the AVAudioSession:", error.localizedDescription)
         }
     }
 

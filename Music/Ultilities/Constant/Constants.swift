@@ -9,7 +9,7 @@
 import Foundation
 
 struct Constants {
-
+    
     struct Icon {
         static let stop = "326570-256 "
         static let play = "211876-128"
@@ -28,9 +28,8 @@ struct Constants {
         static let mp3 = ".mp3"
     }
 
-    static let NameSong = "Chi-Yeu-Minh-Em-Chau-Khai-Phong"
-
     struct API {
-        static let base = ""
+        static let baseURL = "https://music-api-kp.herokuapp.com"
+        static let rankVN = "/ranks/songs/nhac-viet"
     }
 }

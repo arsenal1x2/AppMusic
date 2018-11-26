@@ -37,19 +37,29 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kwf-LH-rrK">
                             <rect key="frame" x="28" y="0.0" width="269" height="89"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yct-8g-VJm">
-                                    <rect key="frame" x="116" y="0.0" width="37" height="44.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yct-8g-VJm">
+                                    <rect key="frame" x="0.0" y="0.0" width="269" height="44.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chepoter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co3-ZU-97D">
-                                    <rect key="frame" x="102.5" y="44.5" width="64" height="44.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chepoter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co3-ZU-97D">
+                                    <rect key="frame" x="0.0" y="44.5" width="269" height="44.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Co3-ZU-97D" secondAttribute="trailing" id="ARk-Kp-Gb2"/>
+                                <constraint firstAttribute="trailing" secondItem="yct-8g-VJm" secondAttribute="trailing" id="LUH-0G-gz2"/>
+                                <constraint firstAttribute="bottom" secondItem="Co3-ZU-97D" secondAttribute="bottom" id="PWW-vA-7sS"/>
+                                <constraint firstItem="yct-8g-VJm" firstAttribute="top" secondItem="Kwf-LH-rrK" secondAttribute="top" id="PYu-fj-Qyv"/>
+                                <constraint firstItem="yct-8g-VJm" firstAttribute="leading" secondItem="Kwf-LH-rrK" secondAttribute="leading" id="cdQ-Lk-ZQO"/>
+                                <constraint firstItem="Co3-ZU-97D" firstAttribute="top" secondItem="yct-8g-VJm" secondAttribute="bottom" id="pop-3w-hys"/>
+                                <constraint firstItem="Co3-ZU-97D" firstAttribute="top" secondItem="yct-8g-VJm" secondAttribute="bottom" id="unS-hq-wl9"/>
+                                <constraint firstItem="Co3-ZU-97D" firstAttribute="leading" secondItem="Kwf-LH-rrK" secondAttribute="leading" id="wkj-cL-764"/>
+                            </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEs-kE-Ge1">
                             <rect key="frame" x="297" y="0.0" width="28" height="89"/>
